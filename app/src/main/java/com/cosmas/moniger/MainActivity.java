@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         walletsRecyclerView = findViewById(R.id.wallets_recycler_view);
         walletsRecyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this, walletsNames, walletsImages);
-        walletsRecyclerView.setAdapter(recyclerViewAdapter);
+        WalletsRecyclerViewAdapter walletsRecyclerViewAdapter = new WalletsRecyclerViewAdapter(this, walletsNames, walletsImages);
+        walletsRecyclerView.setAdapter(walletsRecyclerViewAdapter);
     }
 
     void addTestWallets()

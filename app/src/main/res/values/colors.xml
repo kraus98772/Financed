@@ -4,6 +4,7 @@
     <color name="gradient_light_raisin_black">#252525</color>
     <color name="nickel">#6A706E</color>
     <color name="alice_blue">#E1E5EE</color>
+    <color name="text_light">#E1E5EE</color>
     <color name="clickable_areas">#E1E5EE</color>
     <color name="background">#272727</color>
 </resources>

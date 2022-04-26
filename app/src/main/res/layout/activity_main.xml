@@ -38,7 +38,7 @@
         app:layout_constraintRight_toLeftOf="parent"
         android:id="@+id/bottom_menu"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/raisin_black">
+        android:background="@drawable/wallet_choice_background">
 
         <ImageButton
             android:id="@+id/add_wallet_button"

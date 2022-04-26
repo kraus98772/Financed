@@ -1,6 +1,7 @@
 package com.cosmas.moniger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class WalletsRecyclerViewAdapter extends RecyclerView.Adapter<WalletsRecyclerViewAdapter.ViewHolder>{
 
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "WalletsRecyclerViewAdapter";
     private Context mContext;
     private ArrayList<String> walletsNames = new ArrayList<>();
     private ArrayList<Integer> walletsImages = new ArrayList<>();
 
 
-    public RecyclerViewAdapter(Context mcontext, ArrayList<String> walletsNames, ArrayList<Integer> walletsImages) {
+    public WalletsRecyclerViewAdapter(Context mcontext, ArrayList<String> walletsNames, ArrayList<Integer> walletsImages) {
         this.mContext = mcontext;
         this.walletsNames = walletsNames;
         this.walletsImages = walletsImages;
@@ -39,6 +40,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.walletName.setText(walletsNames.get(position));
         holder.walletImage.setImageResource(walletsImages.get(position));
+        holder.walletView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.startActivity(new Intent(mContext, WalletActivity.class));
+            }
+        });
+
+
     }
 
     @Override

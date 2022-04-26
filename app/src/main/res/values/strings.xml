@@ -2,4 +2,7 @@
     <string name="app_name">Moniger</string>
     <string name="my_wallets_header">My Wallets</string>
     <string name="wallet_name_holder">Name</string>
+    <string name="transaction_date_holder">01.01.2022</string>
+    <string name="value_holder">10000</string>
+    <string name="currency_holder">$</string>
 </resources>
