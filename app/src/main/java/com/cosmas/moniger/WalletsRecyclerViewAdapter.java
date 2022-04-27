@@ -18,14 +18,12 @@ public class WalletsRecyclerViewAdapter extends RecyclerView.Adapter<WalletsRecy
 
     private static final String TAG = "WalletsRecyclerViewAdapter";
     private Context mContext;
-    private ArrayList<String> walletsNames = new ArrayList<>();
-    private ArrayList<Integer> walletsImages = new ArrayList<>();
+    private ArrayList<Wallet> wallets = new ArrayList<>();
 
 
-    public WalletsRecyclerViewAdapter(Context mcontext, ArrayList<String> walletsNames, ArrayList<Integer> walletsImages) {
+    public WalletsRecyclerViewAdapter(Context mcontext, ArrayList<Wallet> wallets) {
         this.mContext = mcontext;
-        this.walletsNames = walletsNames;
-        this.walletsImages = walletsImages;
+        this.wallets = wallets;
     }
 
     @NonNull
@@ -38,21 +36,28 @@ public class WalletsRecyclerViewAdapter extends RecyclerView.Adapter<WalletsRecy
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.walletName.setText(walletsNames.get(position));
-        holder.walletImage.setImageResource(walletsImages.get(position));
+        holder.walletName.setText(wallets.get(position).getWalletName());
+        holder.walletImage.setImageResource(wallets.get(position).getImage());
         holder.walletView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, WalletActivity.class));
+                openWalletActivity(wallets.get(holder.getAdapterPosition()));
             }
         });
+    }
 
-
+    void openWalletActivity(Wallet wallet)
+    {
+        String walletName = wallet.getWalletName();
+        Intent intent = new Intent(mContext, WalletActivity.class);
+        intent.putExtra("name", walletName);
+        intent.putExtra("currency", wallet.getWalletCurrency());
+        mContext.startActivity(intent);
     }
 
     @Override
     public int getItemCount() {
-        return walletsNames.size();
+        return wallets.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

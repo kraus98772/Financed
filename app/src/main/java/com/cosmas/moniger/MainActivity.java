@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> walletsNames = new ArrayList<>();
     private ArrayList<Integer> walletsImages = new ArrayList<>();
+    private ArrayList<Wallet> wallets = new ArrayList<>();
 
     void initLayoutElements()
     {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         walletsRecyclerView = findViewById(R.id.wallets_recycler_view);
         walletsRecyclerView.setLayoutManager(layoutManager);
-        WalletsRecyclerViewAdapter walletsRecyclerViewAdapter = new WalletsRecyclerViewAdapter(this, walletsNames, walletsImages);
+        WalletsRecyclerViewAdapter walletsRecyclerViewAdapter = new WalletsRecyclerViewAdapter(this, wallets);
         walletsRecyclerView.setAdapter(walletsRecyclerViewAdapter);
     }
 
@@ -48,15 +49,10 @@ public class MainActivity extends AppCompatActivity {
     {
 
         // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 4
-        walletsNames.add("Wallet 1");
-        walletsNames.add("Wallet 2");
-        walletsNames.add("Wallet 3");
-        walletsNames.add("Wallet 4");
-
-        walletsImages.add(new WalletImage().WALLET_IMAGE);
-        walletsImages.add(new WalletImage().DOLAR_CASH_IMAGE);
-        walletsImages.add(new WalletImage().WALLET_IMAGE);
-        walletsImages.add(new WalletImage().DOLAR_CASH_IMAGE);
+        wallets.add(new Wallet(new Currency().EUR, "Wallet 1" , new WalletImage().WALLET_IMAGE));
+        wallets.add(new Wallet(new Currency().JPY, "Wallet 2" , new WalletImage().DOLAR_CASH_IMAGE));
+        wallets.add(new Wallet(new Currency().USD, "Wallet 3" , new WalletImage().WALLET_IMAGE));
+        wallets.add(new Wallet(new Currency().PLN, "Wallet 3" , new WalletImage().DOLAR_CASH_IMAGE));
 
 
     }

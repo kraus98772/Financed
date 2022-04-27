@@ -1,21 +1,21 @@
 package com.cosmas.moniger;
 
 public class Wallet {
-    private Currency walletCurrency;
+    private String walletCurrency;
     private String walletName;
     private int image;
 
-    public Wallet(Currency walletCurrency, String walletName, int image) {
+    public Wallet(String walletCurrency, String walletName, int image) {
         this.walletCurrency = walletCurrency;
         this.walletName = walletName;
         this.image = image;
     }
 
-    public Currency getWalletCurrency() {
+    public String getWalletCurrency() {
         return walletCurrency;
     }
 
-    public void setWalletCurrency(Currency walletCurrency) {
+    public void setWalletCurrency(String walletCurrency) {
         this.walletCurrency = walletCurrency;
     }
 

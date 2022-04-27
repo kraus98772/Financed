@@ -3,22 +3,22 @@ package com.cosmas.moniger;
 import java.util.Date;
 
 public class Transaction {
-    private float transactionValue;
+    private double transactionValue;
     private Date transactionDate;
     private String transactionCategory, transactionDescription;
 
-    public Transaction(float transactionValue, Date transactionDate, String transactionCategory, String transactionDescription) {
+    public Transaction(double transactionValue, Date transactionDate, String transactionCategory, String transactionDescription) {
         this.transactionValue = transactionValue;
         this.transactionDate = transactionDate;
         this.transactionCategory = transactionCategory;
         this.transactionDescription = transactionDescription;
     }
 
-    public float getTransactionValue() {
+    public double getTransactionValue() {
         return transactionValue;
     }
 
-    public void setTransactionValue(float transactionValue) {
+    public void setTransactionValue(double transactionValue) {
         this.transactionValue = transactionValue;
     }
 
