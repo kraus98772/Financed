@@ -40,13 +40,26 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/wallet_choice_background">
 
-        <ImageButton
-            android:id="@+id/add_wallet_button"
+<!--        <ImageButton-->
+<!--            android:id="@+id/add_wallet_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:backgroundTint="#00000000"-->
+<!--            android:src="@drawable/ic_plus" />-->
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/alice_blue"
             android:layout_centerHorizontal="true"
-            android:backgroundTint="#00000000"
-            android:src="@drawable/ic_plus" />
+            android:textAllCaps="true"
+            android:text="ADD WALLET"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/rubik_family"
+            android:textFontWeight="700"
+            android:id="@+id/add_wallet_button"
+            android:textSize="20sp"/>
 
         <ImageButton
             android:id="@+id/settings_wallet_button"

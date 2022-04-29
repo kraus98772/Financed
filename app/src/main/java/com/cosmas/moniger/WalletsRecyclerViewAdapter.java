@@ -57,7 +57,7 @@ public class WalletsRecyclerViewAdapter extends RecyclerView.Adapter<WalletsRecy
 
     @Override
     public int getItemCount() {
-        return wallets.size();
+        return wallets != null ? wallets.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder

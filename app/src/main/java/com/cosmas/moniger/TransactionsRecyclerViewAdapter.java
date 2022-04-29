@@ -39,12 +39,11 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
 
     @Override
     public int getItemCount() {
-        return transactions.size();
+        return transactions != null ? transactions.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
     {
-        // TODO: 4/26/22 Add currency sign to transactions' values by sending additional info through Intent to the activity
 
         TextView transactionValue, transactionCurrency, transactionDate;
 

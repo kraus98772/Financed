@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moniger">
         <activity
+            android:name=".AddWalletActivity"
+            android:exported="false" />
+        <activity
             android:name=".WalletActivity"
             android:exported="false" />
         <activity

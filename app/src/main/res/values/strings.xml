@@ -5,4 +5,6 @@
     <string name="transaction_date_holder">01.01.2022</string>
     <string name="value_holder">10000</string>
     <string name="currency_holder">$</string>
+    <string name="new_wallet">New Wallet</string>
+    <string name="currency_item_holder">$ USD</string>
 </resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddWalletActivity"
+    android:padding="26dp"
+    android:background="@drawable/wallet_background">
+
+    <!-- Put the go_back_button and the New Wallet text into relative layout and center the text there -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_left_arrow"
+        android:id="@+id/go_back_button"
+        android:background="#00ffffff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_wallet"
+        android:id="@+id/new_wallet_text"
+        android:textSize="38sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="@font/rubik_family"
+        android:textFontWeight="600"
+        android:textColor="@color/alice_blue"
+        />
+
+    <EditText
+        android:id="@+id/edit_text_wallet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:hint="Name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/alice_blue"
+        android:textColorHint="@color/alice_blue"
+        app:layout_constraintTop_toBottomOf="@+id/new_wallet_text"
+        android:backgroundTint="@color/alice_blue"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/alice_blue"
+        android:id="@+id/dropdown_currency_spinner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_wallet_name"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

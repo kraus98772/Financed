@@ -3,9 +3,17 @@ package com.cosmas.moniger;
 public class Currency {
 
     String USD = "USD";
-    String GBP = "GBP";
-    String EUR = "EUR";
-    String JPY = "JPY";
-    String PLN = "PLN";
+    String USD_SYMBOL = "$";
 
+    String GBP = "GBP";
+    String GBP_SYMBOL = "₤";
+
+    String EUR = "EUR";
+    String EUR_SYMBOL = "€";
+
+    String JPY = "JPY";
+    String JPY_SYMBOL = "¥";
+
+    String PLN = "PLN";
+    String PLN_SYMBOL = "zl";
 }
