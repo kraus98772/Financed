@@ -13,21 +13,25 @@ import java.util.ArrayList;
 public class CurrencySpinnerAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<String> currencies;
+    private ArrayList<String> currenciesNames;
+    private ArrayList<String> currenciesSymbols;
 
-    public CurrencySpinnerAdapter(Context mContext, ArrayList<String> currencies) {
+    public CurrencySpinnerAdapter(Context mContext, ArrayList<String> currenciesNames, ArrayList<String> currenciesSymbols) {
         this.mContext = mContext;
-        this.currencies = currencies;
+        this.currenciesNames = currenciesNames;
+        this.currenciesSymbols = currenciesSymbols;
     }
+
+
 
     @Override
     public int getCount() {
-        return currencies != null ? currencies.size() : 0;
+        return currenciesNames != null ? currenciesNames.size() : 0;
     }
 
     @Override
     public Object getItem(int i) {
-        return currencies.get(i);
+        return currenciesNames.get(i);
     }
 
     @Override
@@ -39,8 +43,10 @@ public class CurrencySpinnerAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View rootView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.currency_item, viewGroup, false);
         TextView currencyName = rootView.findViewById(R.id.currency_name);
+        TextView currencySymbol = rootView.findViewById(R.id.currency_symbol);
 
-        currencyName.setText(currencies.get(i));
+        currencyName.setText(currenciesNames.get(i));
+        currencySymbol.setText(currenciesSymbols.get(i));
         return rootView;
     }
 }

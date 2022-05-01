@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3075" />
+        <entry key="app/src/main/res/drawable/add_wallet_button.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/ic_dolar_cash_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/ic_gear.xml" value="0.3075" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3075" />

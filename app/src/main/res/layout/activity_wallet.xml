@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/transactions_text"
-        android:text="Transactions"
+        android:text="@string/transactions"
         android:textColor="@color/alice_blue"
         android:fontFamily="@font/rubik_family"
         android:textFontWeight="400"

@@ -7,4 +7,5 @@
     <string name="currency_holder">$</string>
     <string name="new_wallet">New Wallet</string>
     <string name="currency_item_holder">$ USD</string>
+    <string name="transactions">Transactions</string>
 </resources>

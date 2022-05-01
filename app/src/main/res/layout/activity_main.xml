@@ -48,18 +48,19 @@
 <!--            android:backgroundTint="#00000000"-->
 <!--            android:src="@drawable/ic_plus" />-->
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/alice_blue"
-            android:layout_centerHorizontal="true"
-            android:textAllCaps="true"
-            android:text="ADD WALLET"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/add_wallet_button"
             android:fontFamily="@font/rubik_family"
-            android:textFontWeight="700"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="ADD WALLET"
             android:id="@+id/add_wallet_button"
-            android:textSize="20sp"/>
+            android:textColor="@color/raisin_black"
+            android:textFontWeight="600"
+            android:textSize="18dp" />
 
         <ImageButton
             android:id="@+id/settings_wallet_button"

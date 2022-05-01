@@ -20,6 +20,9 @@ public class WalletActivity extends AppCompatActivity {
     private TextView currencyView;
     private ImageButton goBackButton;
 
+    // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
+    //  into different currency depending on current course ) ]
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
