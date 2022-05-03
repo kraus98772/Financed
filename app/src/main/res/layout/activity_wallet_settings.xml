@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WalletSettingsActivity"
+    android:background="@color/raisin_black">
+
+    <RelativeLayout
+        android:id="@+id/top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="24dp">
+
+        <ImageButton
+            android:id="@+id/go_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_left_arrow" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="100dp">
+
+        <TextView
+            android:id="@+id/remove_wallet_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/rubik_family"
+            android:text="Remove Wallet"
+            android:textColor="@color/warning"
+            android:textFontWeight="500"
+            android:textSize="22dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/test_button"
+            android:layout_below="@id/remove_wallet_button"
+            android:text="test button"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/remove_wallet_popup"
+        android:visibility="gone"
+        android:background="@drawable/popup_background"
+        android:padding="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/popup"
+            android:padding="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_family"
+                android:id="@+id/confirmation_warning_text"
+                android:text="Do you really want to remove this wallet ?"
+                android:textColor="@color/alice_blue"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confirmation_warning_text"
+                android:fontFamily="@font/rubik_family"
+                android:layout_marginTop="10dp"
+                android:id="@+id/confirm_remove_wallet_button"
+                android:text="Yes"
+                android:textColor="@color/warning_dark"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/confirmation_warning_text"
+                android:fontFamily="@font/rubik_family"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cancel_remove_wallet_button"
+                android:text="No"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/alice_blue"
+                android:layout_marginEnd="10dp"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

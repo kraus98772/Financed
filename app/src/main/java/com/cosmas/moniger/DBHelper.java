@@ -60,6 +60,14 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(transactionTableQuery);
 
     }
+    // removing wallet doesn't work ;/
+    // TODO: 5/3/22 Fix removing wallet option
+    public void removeWallet(String walletName)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + WALLETS_TABLE_NAME + " WHERE" + NAME_COLUMN + "=\"" + walletName + "\"");
+        db.execSQL("DROP TABLE IF EXISTS " + createWalletTransactionsTableName(walletName));
+    }
 
     public ArrayList<Wallet> getWalletsArrayList()
     {
@@ -86,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public String createTransactionTableQuery(Wallet wallet)
     {
-        return "CREATE TABLE " + wallet.getWalletName().replaceAll("\\s", "")
+        return "CREATE TABLE " + createWalletTransactionsTableName(wallet.getWalletName())
                 + "( " + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + VALUE_COLUMN + " INTEGER, "
                 + DAY_COLUMN + " INTEGER, "
@@ -94,6 +102,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 + YEAR_COLUMN + " INTEGER)";
     }
 
+    public String createWalletTransactionsTableName(String walletName)
+    {
+        return walletName.replaceAll("\\s", "_");
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

@@ -65,11 +65,14 @@ public class MainActivity extends AppCompatActivity {
     {
 
         // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 4
-        wallets.add(new Wallet(new Currency().EUR, "Wallet 1" , new WalletImage().WALLET_IMAGE));
+        /*wallets.add(new Wallet(new Currency().EUR, "Wallet 1" , new WalletImage().WALLET_IMAGE));
         wallets.add(new Wallet(new Currency().JPY, "Wallet 2" , new WalletImage().DOLAR_CASH_IMAGE));
         wallets.add(new Wallet(new Currency().USD, "Wallet 3" , new WalletImage().WALLET_IMAGE));
-        wallets.add(new Wallet(new Currency().PLN, "Wallet 4" , new WalletImage().DOLAR_CASH_IMAGE));
+        wallets.add(new Wallet(new Currency().PLN, "Wallet 4" , new WalletImage().DOLAR_CASH_IMAGE));*/
 
+        DBHelper dbHelper = new DBHelper(MainActivity.this);
+        wallets = dbHelper.getWalletsArrayList();
+        dbHelper.close();
 
     }
 }

@@ -18,7 +18,7 @@ public class WalletActivity extends AppCompatActivity {
 
     private ArrayList<Transaction> transactions = new ArrayList<>();
     private TextView currencyView;
-    private ImageButton goBackButton;
+    private ImageButton goBackButton, settingsButton;
 
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
     //  into different currency depending on current course ) ]
@@ -33,12 +33,13 @@ public class WalletActivity extends AppCompatActivity {
         initRecyclerView();
         addTestTransactions();
 
-        Bundle walletInfo = getExtrasFromWalletsRecyclerView();
-        setCurrencyView(walletInfo.getString("currency"));
+        Bundle walletInfo = getExtrasForWallet();
+        setCurrencyView(walletInfo.getString("CURRENCY"));
 
+        setUpSettingsButton(walletInfo.getString("WALLET_NAME"), walletInfo.getString("CURRENCY"));
     }
 
-    Bundle getExtrasFromWalletsRecyclerView()
+    Bundle getExtrasForWallet()
     {
         return getIntent().getExtras();
     }
@@ -66,8 +67,21 @@ public class WalletActivity extends AppCompatActivity {
     void initViews()
     {
         goBackButton = findViewById(R.id.go_back_button);
+        settingsButton = findViewById(R.id.settings_button);
     }
 
+    void setUpSettingsButton(String walletName, String walletCurrency)
+    {
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WalletActivity.this, WalletSettingsActivity.class);
+                intent.putExtra("WALLET_NAME", walletName);
+                intent.putExtra("CURRENCY", walletCurrency);
+                startActivity(intent);
+            }
+        });
+    }
     void setUpGoBackButton()
     {
         goBackButton.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +107,4 @@ public class WalletActivity extends AppCompatActivity {
         transactions.add(new Transaction(22, new Date(2020,1,3), "Food", "You bought a dog ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
     }
-
-
 }

@@ -86,4 +86,3 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
         return dateString;
     }
 }
-

@@ -48,10 +48,9 @@ public class WalletsRecyclerViewAdapter extends RecyclerView.Adapter<WalletsRecy
 
     void openWalletActivity(Wallet wallet)
     {
-        String walletName = wallet.getWalletName();
         Intent intent = new Intent(mContext, WalletActivity.class);
-        intent.putExtra("name", walletName);
-        intent.putExtra("currency", wallet.getWalletCurrency());
+        intent.putExtra("WALLET_NAME", wallet.getWalletName());
+        intent.putExtra("CURRENCY", wallet.getWalletCurrency());
         mContext.startActivity(intent);
     }
 
