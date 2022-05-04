@@ -17,7 +17,7 @@ import java.util.Date;
 public class WalletActivity extends AppCompatActivity {
 
     private ArrayList<Transaction> transactions = new ArrayList<>();
-    private TextView currencyView;
+    private TextView currencyView, walletValueView;
     private ImageButton goBackButton, settingsButton;
 
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
@@ -32,6 +32,8 @@ public class WalletActivity extends AppCompatActivity {
         setUpGoBackButton();
         initRecyclerView();
         addTestTransactions();
+
+        setupWalletValue();
 
         Bundle walletInfo = getExtrasForWallet();
         setCurrencyView(walletInfo.getString("CURRENCY"));
@@ -68,6 +70,7 @@ public class WalletActivity extends AppCompatActivity {
     {
         goBackButton = findViewById(R.id.go_back_button);
         settingsButton = findViewById(R.id.settings_button);
+        walletValueView = findViewById(R.id.wallet_value);
     }
 
     void setUpSettingsButton(String walletName, String walletCurrency)
@@ -92,6 +95,16 @@ public class WalletActivity extends AppCompatActivity {
         });
     }
 
+    void setupWalletValue()
+    {
+        double sum = 0;
+        for(int i = 0; i < transactions.size(); i++)
+        {
+            sum += transactions.get(i).getTransactionValue();
+        }
+        walletValueView.setText(String.valueOf(sum));
+    }
+
     void initRecyclerView()
     {
         RecyclerView recyclerView = findViewById(R.id.transactions_recycler_view);
@@ -106,5 +119,16 @@ public class WalletActivity extends AppCompatActivity {
         transactions.add(new Transaction(1000.22, new Date(2022,0,12), "Food", "You bought a cat ?"));
         transactions.add(new Transaction(22, new Date(2020,1,3), "Food", "You bought a dog ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(14.78, new Date(2021,2,22), "Food", "You bought a slime ?"));
     }
 }

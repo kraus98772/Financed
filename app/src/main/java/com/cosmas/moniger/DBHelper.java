@@ -60,13 +60,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(transactionTableQuery);
 
     }
-    // removing wallet doesn't work ;/
-    // TODO: 5/3/22 Fix removing wallet option
     public void removeWallet(String walletName)
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + WALLETS_TABLE_NAME + " WHERE" + NAME_COLUMN + "=\"" + walletName + "\"");
-        db.execSQL("DROP TABLE IF EXISTS " + createWalletTransactionsTableName(walletName));
+        db.execSQL("DELETE FROM " + WALLETS_TABLE_NAME + " WHERE " + NAME_COLUMN + "=\"" + walletName + "\"");
+        db.execSQL("DROP TABLE " + createWalletTransactionsTableName(walletName));
     }
 
     public ArrayList<Wallet> getWalletsArrayList()
