@@ -15,5 +15,5 @@
     <color name="clickable_areas">#E1E5EE</color>
 
     <color name="warning">#BB342F</color>
-    <color name="warning_dark">#992c28</color>
+    <color name="warning_light">#F9564F</color>
 </resources>

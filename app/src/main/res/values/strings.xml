@@ -8,4 +8,8 @@
     <string name="new_wallet">New Wallet</string>
     <string name="currency_item_holder">$ USD</string>
     <string name="transactions">Transactions</string>
+    <string name="add_wallet">+ Add Wallet</string>
+    <string name="confirm">Confirm</string>
+    <string name="choose_wallet_image">Choose wallet image</string>
+    <string name="remove_wallet">Remove Wallet</string>
 </resources>

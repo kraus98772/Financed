@@ -9,19 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton settingsButton;
-    //private ImageButton addWalletButton;
+
     private Button addWalletButton;
     private RecyclerView walletsRecyclerView;
 
-    private ArrayList<String> walletsNames = new ArrayList<>();
-    private ArrayList<Integer> walletsImages = new ArrayList<>();
     private ArrayList<Wallet> wallets = new ArrayList<>();
 
     void initLayoutElements() {
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initLayoutElements();
-        addTestWallets();
+        getWallets();
         initRecyclerView();
 
         addWalletButtonSetup();
@@ -61,18 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void addTestWallets()
+    void getWallets()
     {
-
-        // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 4
-        /*wallets.add(new Wallet(new Currency().EUR, "Wallet 1" , new WalletImage().WALLET_IMAGE));
-        wallets.add(new Wallet(new Currency().JPY, "Wallet 2" , new WalletImage().DOLAR_CASH_IMAGE));
-        wallets.add(new Wallet(new Currency().USD, "Wallet 3" , new WalletImage().WALLET_IMAGE));
-        wallets.add(new Wallet(new Currency().PLN, "Wallet 4" , new WalletImage().DOLAR_CASH_IMAGE));*/
-
+        // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 5
         DBHelper dbHelper = new DBHelper(MainActivity.this);
         wallets = dbHelper.getWalletsArrayList();
         dbHelper.close();
-
     }
 }
