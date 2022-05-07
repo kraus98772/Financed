@@ -12,4 +12,7 @@
     <string name="confirm">Confirm</string>
     <string name="choose_wallet_image">Choose wallet image</string>
     <string name="remove_wallet">Remove Wallet</string>
+    <string name="new_transaction">+ new</string>
+    <string name="value">Value</string>
+    <string name="new_transaction_header">New Transaction</string>
 </resources>

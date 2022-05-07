@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ public class WalletActivity extends AppCompatActivity {
     private ArrayList<Transaction> transactions = new ArrayList<>();
     private TextView currencyView, walletValueView;
     private ImageButton goBackButton, settingsButton;
+    private Button addTransactionButton;
+    private String walletName, walletCurrency;
 
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
     //  into different currency depending on current course ) ]
@@ -29,21 +31,26 @@ public class WalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wallet);
 
         initViews();
-        setUpGoBackButton();
+        setupGoBackButton();
         initRecyclerView();
         addTestTransactions();
 
         setupWalletValue();
+        getInfoAboutWallet();
 
-        Bundle walletInfo = getExtrasForWallet();
-        setCurrencyView(walletInfo.getString("CURRENCY"));
 
-        setUpSettingsButton(walletInfo.getString("WALLET_NAME"), walletInfo.getString("CURRENCY"));
+        setCurrencyView(walletCurrency);
+
+        setupSettingsButton(walletName, walletCurrency);
+        setupAddTransactionButton(walletName, walletCurrency);
+
     }
 
-    Bundle getExtrasForWallet()
+    void getInfoAboutWallet()
     {
-        return getIntent().getExtras();
+        Bundle walletInfo = getIntent().getExtras();
+        walletName = walletInfo.getString("WALLET_NAME");
+        walletCurrency = walletInfo.getString("CURRENCY");
     }
 
     void setCurrencyView(String currency)
@@ -71,9 +78,10 @@ public class WalletActivity extends AppCompatActivity {
         goBackButton = findViewById(R.id.go_back_button);
         settingsButton = findViewById(R.id.settings_button);
         walletValueView = findViewById(R.id.wallet_value);
+        addTransactionButton = findViewById(R.id.add_transaction_button);
     }
 
-    void setUpSettingsButton(String walletName, String walletCurrency)
+    void setupSettingsButton(String walletName, String walletCurrency)
     {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +93,25 @@ public class WalletActivity extends AppCompatActivity {
             }
         });
     }
-    void setUpGoBackButton()
+    void setupGoBackButton()
     {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WalletActivity.this, MainActivity.class));
+            }
+        });
+    }
+
+    void setupAddTransactionButton(String walletName, String walletCurrency)
+    {
+        addTransactionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addTransactionActivityIntent = new Intent(WalletActivity.this, AddTransactionActivity.class);
+                addTransactionActivityIntent.putExtra("WALLET_NAME", walletName);
+                addTransactionActivityIntent.putExtra("CURRENCY", walletCurrency);
+                startActivity(addTransactionActivityIntent);
             }
         });
     }

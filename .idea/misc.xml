@@ -4,22 +4,31 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3075" />
+        <entry key="app/src/main/res/drawable/add_transaction_button.xml" value="0.102" />
+        <entry key="app/src/main/res/drawable/add_transaction_button_border.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/add_wallet_button.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/date_field.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable/date_field_active.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable/edit_text_no_handles.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_dolar_cash_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/ic_gear.xml" value="0.3075" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3075" />
         <entry key="app/src/main/res/drawable/ic_left_arrow.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/ic_minus_no_circle.xml" value="0.1905" />
         <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.3075" />
+        <entry key="app/src/main/res/drawable/ic_plus_no_circle.xml" value="0.1905" />
         <entry key="app/src/main/res/drawable/ic_wallet_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/popup.xml" value="0.2735" />
         <entry key="app/src/main/res/drawable/popup_background.xml" value="0.2735" />
         <entry key="app/src/main/res/drawable/transaction_background.xml" value="0.1695" />
+        <entry key="app/src/main/res/drawable/transaction_value_input.xml" value="0.1905" />
         <entry key="app/src/main/res/drawable/wallet_background.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/wallet_choice_background.xml" value="0.3075" />
         <entry key="app/src/main/res/drawable/wallet_image_background.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/wallet_image_background_selected.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/wallet_item_background.xml" value="0.2855" />
         <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.28442028985507245" />
+        <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_add_wallet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_wallet.xml" value="0.25" />
