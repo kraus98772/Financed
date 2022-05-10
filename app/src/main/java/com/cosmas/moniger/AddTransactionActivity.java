@@ -29,7 +29,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     private TextView dateText;
 
     private RelativeLayout datePicker;
-    private Date currentlySetDate;
+    private SimpleDate currentlySetDate;
 
     private String walletName, walletCurrency;
 
@@ -128,6 +128,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         });
     }
 
+    // TODO: 5/10/22 Prevent a user from adding a transaction that doesn't have value or date set
     void setupAddTransactionButton(String walletName, String walletCurrency) {
         addTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,9 +172,9 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
         DateTextFormatter dateTextFormatter = new DateTextFormatter();
-        String date = dateTextFormatter.formatText(new Date(year, month, dayOfMonth), "/");
+        String date = dateTextFormatter.formatText(new SimpleDate(dayOfMonth, month, year), "/");
         dateText.setText(date);
-        currentlySetDate = new Date(year, month + 1, dayOfMonth);
+        currentlySetDate = new SimpleDate(dayOfMonth, month, year);
     }
 
     void setUpGoBackButton(String walletName, String walletCurrency)

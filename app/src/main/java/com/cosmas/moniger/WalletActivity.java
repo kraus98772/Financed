@@ -22,6 +22,8 @@ public class WalletActivity extends AppCompatActivity {
     private Button addTransactionButton;
     private String walletName, walletCurrency;
 
+    RecyclerView recyclerView;
+
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
     //  into different currency depending on current course ) ]
 
@@ -33,7 +35,7 @@ public class WalletActivity extends AppCompatActivity {
         initViews();
         getInfoAboutWallet();
 
-        addTestTransactions();
+        addTransactionsToRecyclerView();
 
         setupGoBackButton();
         initRecyclerView();
@@ -129,32 +131,23 @@ public class WalletActivity extends AppCompatActivity {
 
     void initRecyclerView()
     {
-        RecyclerView recyclerView = findViewById(R.id.transactions_recycler_view);
+        recyclerView = findViewById(R.id.transactions_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         TransactionsRecyclerViewAdapter recyclerViewAdapter = new TransactionsRecyclerViewAdapter(this, transactions);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
-    void addTestTransactions()
+    void addTransactionsToRecyclerView()
     {
-        /*transactions.add(new Transaction(1000.22, new Date(2022,0,12), "Food", "You bought a cat ?"));
-        transactions.add(new Transaction(22, new Date(2020,1,3), "Food", "You bought a dog ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(14.78, new Date(2021,2,22), "Food", "You bought a slime ?"));*/
         DBHelper dbHelper = new DBHelper(this);
-
+        ArrayList<Transaction> temp = dbHelper.getTransactions(walletName);
+        for(int i = 0; i < temp.size(); i++)
+        {
+            System.out.println(i + ": ");
+            System.out.println(temp.get(i).getTransactionValue());
+        }
         // TODO: 5/8/22 fix getTransactions
-        transactions = dbHelper.getTransactions(walletName);
+        transactions = temp;
     }
 }

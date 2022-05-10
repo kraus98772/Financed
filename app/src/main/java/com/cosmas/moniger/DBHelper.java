@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -107,7 +108,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(VALUE_COLUMN, transaction.getTransactionValue());
-        values.put(DAY_COLUMN, transaction.getTransactionDate().getDate());
+        values.put(DAY_COLUMN, transaction.getTransactionDate().getDay());
         values.put(MONTH_COLUMN, transaction.getTransactionDate().getMonth());
         values.put(YEAR_COLUMN, transaction.getTransactionDate().getYear());
 
@@ -115,7 +116,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(walletTransactionsTableName, null, values);
     }
-//
+
+    // TODO: 5/10/22 add remove transaction feature
     public ArrayList<Transaction> getTransactions(String walletName)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -130,12 +132,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 int day = cursor.getInt(2);
                 int month = cursor.getInt(3);
                 int year = cursor.getInt(4);
-                Date date = new Date(day, month, year);
+                SimpleDate date = new SimpleDate(day, month, year);
                 Transaction transaction = new Transaction(value, date, "", "");
                 transactions.add(transaction);
             }while(cursor.moveToNext());
         }
         cursor.close();
+        Collections.reverse(transactions);
         return transactions;
     }
 

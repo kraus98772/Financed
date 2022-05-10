@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Transaction {
     private double transactionValue;
-    private Date transactionDate;
+    private SimpleDate transactionDate;
     private String transactionCategory, transactionDescription;
 
-    public Transaction(double transactionValue, Date transactionDate, String transactionCategory, String transactionDescription) {
+    public Transaction(double transactionValue, SimpleDate transactionDate, String transactionCategory, String transactionDescription) {
         this.transactionValue = transactionValue;
         this.transactionDate = transactionDate;
         this.transactionCategory = transactionCategory;
@@ -22,11 +22,11 @@ public class Transaction {
         this.transactionValue = transactionValue;
     }
 
-    public Date getTransactionDate() {
+    public SimpleDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(Date transactionDate) {
+    public void setTransactionDate(SimpleDate transactionDate) {
         this.transactionDate = transactionDate;
     }
 

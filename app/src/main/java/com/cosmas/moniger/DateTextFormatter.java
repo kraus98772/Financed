@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class DateTextFormatter {
 
-    public String formatText(Date date, String separator)
+    public String formatText(SimpleDate date, String separator)
     {
-        int day = date.getDate();
+        int day = date.getDay();
         // Increased by one because getMonth returns an index of a month which is between 0 and 11
         // TODO: 4/27/22 Reconsider it after adding a function that adds new transactions
         int month = date.getMonth() + 1;
