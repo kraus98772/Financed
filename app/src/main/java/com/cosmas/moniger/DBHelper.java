@@ -115,7 +115,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(walletTransactionsTableName, null, values);
     }
-
+//
     public ArrayList<Transaction> getTransactions(String walletName)
     {
         SQLiteDatabase db = this.getReadableDatabase();
