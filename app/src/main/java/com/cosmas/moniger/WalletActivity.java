@@ -31,13 +31,14 @@ public class WalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wallet);
 
         initViews();
-        setupGoBackButton();
-        initRecyclerView();
-        addTestTransactions();
-
-        setupWalletValue();
         getInfoAboutWallet();
 
+        addTestTransactions();
+
+        setupGoBackButton();
+        initRecyclerView();
+
+        setupWalletValue();
 
         setCurrencyView(walletCurrency);
 
@@ -137,7 +138,7 @@ public class WalletActivity extends AppCompatActivity {
 
     void addTestTransactions()
     {
-        transactions.add(new Transaction(1000.22, new Date(2022,0,12), "Food", "You bought a cat ?"));
+        /*transactions.add(new Transaction(1000.22, new Date(2022,0,12), "Food", "You bought a cat ?"));
         transactions.add(new Transaction(22, new Date(2020,1,3), "Food", "You bought a dog ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
@@ -150,6 +151,10 @@ public class WalletActivity extends AppCompatActivity {
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
         transactions.add(new Transaction(33, new Date(2021,2,22), "Food", "You bought a slime ?"));
-        transactions.add(new Transaction(14.78, new Date(2021,2,22), "Food", "You bought a slime ?"));
+        transactions.add(new Transaction(14.78, new Date(2021,2,22), "Food", "You bought a slime ?"));*/
+        DBHelper dbHelper = new DBHelper(this);
+
+        // TODO: 5/8/22 fix getTransactions
+        transactions = dbHelper.getTransactions(walletName);
     }
 }

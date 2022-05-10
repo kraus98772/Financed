@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -94,10 +95,48 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         return "CREATE TABLE " + createWalletTransactionsTableName(wallet.getWalletName())
                 + "( " + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + VALUE_COLUMN + " INTEGER, "
+                + VALUE_COLUMN + " REAL, "
                 + DAY_COLUMN + " INTEGER, "
                 + MONTH_COLUMN + " INTEGER, "
                 + YEAR_COLUMN + " INTEGER)";
+    }
+
+    public void addTransaction(String walletName, Transaction transaction)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(VALUE_COLUMN, transaction.getTransactionValue());
+        values.put(DAY_COLUMN, transaction.getTransactionDate().getDate());
+        values.put(MONTH_COLUMN, transaction.getTransactionDate().getMonth());
+        values.put(YEAR_COLUMN, transaction.getTransactionDate().getYear());
+
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+
+        db.insert(walletTransactionsTableName, null, values);
+    }
+
+    public ArrayList<Transaction> getTransactions(String walletName)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + walletTransactionsTableName, null);
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        if(cursor.moveToFirst())
+        {
+            do {
+                double value = cursor.getDouble(1);
+                int day = cursor.getInt(2);
+                int month = cursor.getInt(3);
+                int year = cursor.getInt(4);
+                Date date = new Date(day, month, year);
+                Transaction transaction = new Transaction(value, date, "", "");
+                transactions.add(transaction);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return transactions;
     }
 
     public String createWalletTransactionsTableName(String walletName)

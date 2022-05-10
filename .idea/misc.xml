@@ -7,9 +7,13 @@
         <entry key="app/src/main/res/drawable/add_transaction_button.xml" value="0.102" />
         <entry key="app/src/main/res/drawable/add_transaction_button_border.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/add_wallet_button.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/calendar_background.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/date_field.xml" value="0.1505" />
         <entry key="app/src/main/res/drawable/date_field_active.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable/date_picker_bacgkround.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable/date_picker_background.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/edit_text_no_handles.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_calendar_2.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/ic_dolar_cash_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/ic_gear.xml" value="0.3075" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3075" />

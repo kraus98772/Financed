@@ -1,25 +1,37 @@
 package com.cosmas.moniger;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class AddTransactionActivity extends AppCompatActivity {
+import java.util.Calendar;
+import java.util.Date;
+
+public class AddTransactionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private ImageButton addValueButton, subtractValueButton, goBackButton;
     private Button addTransactionButton;
-    private EditText valueEditText, dayEditText, monthEditText, yearEditText;
+    private EditText valueEditText;
+    private TextView dateText;
+
+    private RelativeLayout datePicker;
+    private Date currentlySetDate;
 
     private String walletName, walletCurrency;
-    private boolean isDayActive, isMonthActive, isYearActive;
 
     // Variables for on hold buttons
     Handler handler = new Handler();
@@ -33,47 +45,41 @@ public class AddTransactionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_transaction);
 
         initViews();
-
         getInfoAboutWallet();
+
         setUpGoBackButton(walletName, walletCurrency);
 
         setupValueEditText();
         setupAddValueButton();
         setupSubtractValueButton();
+        setupDatePicker();
 
-        initDateBooleans();
-        setupDayEditText();
-        setupMonthEditText();
-        setupYearEditText();
-
-        setupAddTransactionButton();
+        setupAddTransactionButton(walletName, walletCurrency);
 
     }
 
-    void initViews()
-    {
+    void initViews() {
+
         goBackButton = findViewById(R.id.go_back_button);
         addValueButton = findViewById(R.id.increase_value_button);
         subtractValueButton = findViewById(R.id.decrease_value_button);
         valueEditText = findViewById(R.id.value_edit_text);
-        dayEditText = findViewById(R.id.day_edit_text);
-        monthEditText = findViewById(R.id.month_edit_text);
-        yearEditText = findViewById(R.id.year_edit_text);
+        datePicker = findViewById(R.id.date_picker);
+        dateText = findViewById(R.id.date_text);
         addTransactionButton = findViewById(R.id.add_transaction_button);
     }
 
-    void setupValueEditText()
-    {
+    void setupValueEditText() {
         valueEditText.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
     }
 
-    void setupAddValueButton()
-    {
+    void setupAddValueButton() {
         addValueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 float current_value = Float.parseFloat(valueEditText.getText().toString());
                 valueEditText.setText(String.valueOf(current_value + 1));
+
             }
         });
 
@@ -83,7 +89,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        if(!addValueButton.isPressed()) return;
+                        if (!addValueButton.isPressed()) return;
                         float current_value = Float.parseFloat(valueEditText.getText().toString());
                         valueEditText.setText(String.valueOf(current_value + 1));
                         handler.postDelayed(runnable, 20);
@@ -95,8 +101,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         });
     }
 
-    void setupSubtractValueButton()
-    {
+    void setupSubtractValueButton() {
         subtractValueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +116,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                 runnable = new Runnable() {
                     @Override
                     public void run() {
-                        if(!subtractValueButton.isPressed()) return;
+                        if (!subtractValueButton.isPressed()) return;
                         float current_value = Float.parseFloat(valueEditText.getText().toString());
                         valueEditText.setText(String.valueOf(current_value - 1));
                         handler.postDelayed(runnable, 20);
@@ -123,85 +128,52 @@ public class AddTransactionActivity extends AppCompatActivity {
         });
     }
 
-    void initDateBooleans()
-    {
-        isDayActive = false;
-        isMonthActive = false;
-        isYearActive = false;
-    }
-
-    void setupDayEditText()
-    {
-        dayEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(!isDayActive)
-                {
-                    isDayActive = true;
-                    isMonthActive = false;
-                    isYearActive = false;
-
-                    dayEditText.setBackgroundResource(R.drawable.date_field_active);
-                    monthEditText.setBackgroundResource(R.drawable.date_field);
-                    yearEditText.setBackgroundResource(R.drawable.date_field);
-                }
-            }
-        });
-    }
-
-    void setupMonthEditText()
-    {
-        monthEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(!isMonthActive)
-                {
-                    isDayActive = false;
-                    isMonthActive = true;
-                    isYearActive = false;
-
-                    dayEditText.setBackgroundResource(R.drawable.date_field);
-                    monthEditText.setBackgroundResource(R.drawable.date_field_active);
-                    yearEditText.setBackgroundResource(R.drawable.date_field);
-                }
-            }
-        });
-    }
-
-    void setupYearEditText()
-    {
-        yearEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(!isYearActive)
-                {
-                    isDayActive = false;
-                    isMonthActive = false;
-                    isYearActive = true;
-
-                    dayEditText.setBackgroundResource(R.drawable.date_field);
-                    monthEditText.setBackgroundResource(R.drawable.date_field);
-                    yearEditText.setBackgroundResource(R.drawable.date_field_active);
-                }
-            }
-        });
-    }
-
-    void setupAddTransactionButton()
-    {
+    void setupAddTransactionButton(String walletName, String walletCurrency) {
         addTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AddTransactionActivity.this, "Wallet's name is " + walletName, Toast.LENGTH_SHORT).show();
+                DBHelper dbHelper = new DBHelper(AddTransactionActivity.this);
+                dbHelper.addTransaction(walletName,
+                        new Transaction(Double.parseDouble(valueEditText.getText().toString()),
+                                currentlySetDate, "", ""));
+                goBack(walletName, walletCurrency);
             }
         });
     }
 
-    void getInfoAboutWallet()
-    {
+    void getInfoAboutWallet() {
         Bundle walletInfo = getIntent().getExtras();
         walletName = walletInfo.getString("WALLET_NAME");
         walletCurrency = walletInfo.getString("CURRENCY");
+    }
+
+    void setupDatePicker() {
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
+    }
+
+    void showDatePickerDialog()
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                this,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                );
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        DateTextFormatter dateTextFormatter = new DateTextFormatter();
+        String date = dateTextFormatter.formatText(new Date(year, month, dayOfMonth), "/");
+        dateText.setText(date);
+        currentlySetDate = new Date(year, month + 1, dayOfMonth);
     }
 
     void setUpGoBackButton(String walletName, String walletCurrency)
@@ -209,12 +181,16 @@ public class AddTransactionActivity extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddTransactionActivity.this, WalletActivity.class);
-                intent.putExtra("WALLET_NAME", walletName);
-                intent.putExtra("CURRENCY", walletCurrency);
-                startActivity(intent);
+                goBack(walletName, walletCurrency);
             }
         });
     }
 
+    void goBack(String walletName, String walletCurrency)
+    {
+        Intent intent = new Intent(AddTransactionActivity.this, WalletActivity.class);
+        intent.putExtra("WALLET_NAME", walletName);
+        intent.putExtra("CURRENCY", walletCurrency);
+        startActivity(intent);
+    }
 }
