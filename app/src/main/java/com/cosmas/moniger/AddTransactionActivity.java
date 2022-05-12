@@ -15,11 +15,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,18 +31,20 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     private Button addTransactionButton;
     private EditText valueEditText;
     private TextView dateText;
+    private Spinner categoryDropdown;
+    private CategorySpinnerAdapter adapter;
 
     private RelativeLayout datePicker;
     private LocalDateTime todayDate;
     private SimpleDate currentlySetDate;
 
     private String walletName, walletCurrency;
+    private ArrayList<String> categories = new ArrayList<>();
 
     // Variables for on hold buttons
     Handler handler = new Handler();
     Runnable runnable;
 
-    // TODO: 5/7/22 setup date picking
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +52,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
 
         initViews();
         getInfoAboutWallet();
-        // Initializing degault date as today
+        // Initializing default date as today
         todayDate = LocalDateTime.now();
         currentlySetDate = new SimpleDate(todayDate.getDayOfMonth(), todayDate.getMonthValue() - 1, todayDate.getYear());
 
@@ -59,12 +63,15 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         setupSubtractValueButton();
         setupDatePicker();
 
+        addCategories();
+        adapter = new CategorySpinnerAdapter(AddTransactionActivity.this, categories);
+        categoryDropdown.setAdapter(adapter);
+
         setupAddTransactionButton(walletName, walletCurrency);
 
     }
 
     void initViews() {
-
         goBackButton = findViewById(R.id.go_back_button);
         addValueButton = findViewById(R.id.increase_value_button);
         subtractValueButton = findViewById(R.id.decrease_value_button);
@@ -72,11 +79,13 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         datePicker = findViewById(R.id.date_picker);
         dateText = findViewById(R.id.date_text);
         addTransactionButton = findViewById(R.id.add_transaction_button);
+        categoryDropdown = findViewById(R.id.category_spinner);
     }
 
     void setupValueEditText() {
         valueEditText.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
     }
+
 
     void setupAddValueButton() {
         addValueButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +93,6 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
             public void onClick(View view) {
                 float current_value = Float.parseFloat(valueEditText.getText().toString());
                 valueEditText.setText(String.valueOf(current_value + 1));
-
             }
         });
 
@@ -133,7 +141,6 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         });
     }
 
-    // TODO: 5/10/22 Prevent a user from adding a transaction that doesn't have value or date set
     void setupAddTransactionButton(String walletName, String walletCurrency) {
         addTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,6 +207,17 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
                 goBack(walletName, walletCurrency);
             }
         });
+    }
+
+    // TODO: 5/12/22 Move static array lists from java to xml
+
+    void addCategories()
+    {
+        categories.add("Food");
+        categories.add("Drinks");
+        categories.add("Services");
+        categories.add("Bills");
+        categories.add("Income");
     }
 
     void goBack(String walletName, String walletCurrency)

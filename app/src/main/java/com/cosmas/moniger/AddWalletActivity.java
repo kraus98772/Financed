@@ -41,7 +41,7 @@ public class AddWalletActivity extends AppCompatActivity {
 
         addCurrencies();
         initViews();
-
+        // TODO: 5/12/22 move things to separate functions
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
