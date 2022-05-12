@@ -30,6 +30,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DAY_COLUMN = "TRANSACTION_DAY";
     private static final String MONTH_COLUMN = "TRANSACTION_MONTH";
     private static final String YEAR_COLUMN = "TRANSACTION_YEAR";
+    private static final String CATEGORY_COLUMN = "TRANSACTION_CATEGORY";
+    private static final String DESCRIPTION_COLUMN = "TRANSACTION_DESCRIPTION";
 
 
     public DBHelper(Context context) {
@@ -70,6 +72,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // TODO: 5/10/22 add remove transaction feature
+    public void removeTransaction(String walletName, Transaction transaction)
+    {
+
+    }
     public ArrayList<Transaction> getTransactions(String walletName)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -80,18 +86,37 @@ public class DBHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst())
         {
             do {
+                int id = cursor.getInt(0);
                 double value = cursor.getDouble(1);
                 int day = cursor.getInt(2);
                 int month = cursor.getInt(3);
                 int year = cursor.getInt(4);
                 SimpleDate date = new SimpleDate(day, month, year);
                 Transaction transaction = new Transaction(value, date, "", "");
+                transaction.setId(id);
                 transactions.add(transaction);
             }while(cursor.moveToNext());
         }
         cursor.close();
         Collections.reverse(transactions);
         return transactions;
+    }
+
+    public TransactionContent getTransactionContent(String walletName,Transaction transaction)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+        String query = "SELECT " + CATEGORY_COLUMN + ", " + DESCRIPTION_COLUMN + " FROM " + walletTransactionsTableName + " WHERE ID=" + transaction.getId();
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        cursor.moveToFirst();
+        String category = cursor.getString(0);
+        String description = cursor.getString(1);
+        cursor.close();
+
+        return new TransactionContent(category, description);
     }
 
     public ArrayList<Wallet> getWalletsArrayList()
@@ -124,7 +149,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 + VALUE_COLUMN + " REAL, "
                 + DAY_COLUMN + " INTEGER, "
                 + MONTH_COLUMN + " INTEGER, "
-                + YEAR_COLUMN + " INTEGER)";
+                + YEAR_COLUMN + " INTEGER, "
+                + CATEGORY_COLUMN + " TEXT, "
+                + DESCRIPTION_COLUMN + " TEXT )";
     }
 
     public void addTransaction(String walletName, Transaction transaction)
@@ -136,6 +163,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(DAY_COLUMN, transaction.getTransactionDate().getDay());
         values.put(MONTH_COLUMN, transaction.getTransactionDate().getMonth());
         values.put(YEAR_COLUMN, transaction.getTransactionDate().getYear());
+        values.put(CATEGORY_COLUMN, transaction.getTransactionCategory());
+        values.put(DESCRIPTION_COLUMN, transaction.getTransactionDescription());
 
         String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
 

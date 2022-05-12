@@ -40,7 +40,6 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     Handler handler = new Handler();
     Runnable runnable;
 
-
     // TODO: 5/7/22 setup date picking
     @Override
     protected void onCreate(Bundle savedInstanceState) {

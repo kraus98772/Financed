@@ -3,6 +3,7 @@ package com.cosmas.moniger;
 import java.util.Date;
 
 public class Transaction {
+    private int id;
     private double transactionValue;
     private SimpleDate transactionDate;
     private String transactionCategory, transactionDescription;
@@ -44,5 +45,13 @@ public class Transaction {
 
     public void setTransactionDescription(String transactionDescription) {
         this.transactionDescription = transactionDescription;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

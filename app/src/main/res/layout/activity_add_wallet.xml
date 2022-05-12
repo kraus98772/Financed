@@ -45,6 +45,7 @@
         android:backgroundTint="@color/alice_blue"
         android:hint="Name"
         android:maxLength="24"
+        android:singleLine="true"
         android:textColor="@color/alice_blue"
         android:textColorHighlight="@color/text_highlight_color"
         android:textColorHint="@color/alice_blue"

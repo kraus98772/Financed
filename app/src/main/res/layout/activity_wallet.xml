@@ -8,136 +8,117 @@
     android:padding="24dp"
     tools:context=".WalletActivity">
 
-    <!--<ImageButton
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_left_arrow"
-        android:id="@+id/go_back_button"
-        android:background="#00FFFFFF"
+        android:id="@+id/top_header"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>-->
-
-    <RelativeLayout
-        android:id="@+id/top_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintRight_toRightOf="parent">
 
-        <ImageButton
-            android:id="@+id/go_back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:src="@drawable/ic_left_arrow" />
+        <RelativeLayout
+            android:id="@+id/top_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/settings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:background="#00FFFFFF"
-            android:src="@drawable/ic_gear" />
+            <ImageButton
+                android:id="@+id/go_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_left_arrow" />
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/settings_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_gear" />
 
-    <RelativeLayout
-        android:id="@+id/current_finances_state"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_menu">
+        </RelativeLayout>
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-
-            <TextView
-                android:id="@+id/wallet_value"
+                android:id="@+id/current_finances_state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik_family"
-                android:text="1 000"
-                android:textColor="@color/alice_blue"
-                android:textFontWeight="700"
-                android:textSize="32sp" />
+                android:layout_below="@+id/top_menu"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true">
 
             <TextView
-                android:id="@+id/wallet_currency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="@font/rubik_family"
-                android:text="$"
-                android:textColor="@color/alice_blue"
-                android:textFontWeight="700"
-                android:textSize="32sp" />
+                    android:id="@+id/wallet_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_family"
+                    android:text="1 000"
+                    android:textColor="@color/alice_blue"
+                    android:textFontWeight="700"
+                    android:textSize="32sp" />
 
+            <TextView
+                    android:id="@+id/wallet_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/rubik_family"
+                    android:text="$"
+                    android:textColor="@color/alice_blue"
+                    android:textFontWeight="700"
+                    android:textSize="32sp" />
         </LinearLayout>
 
-    </RelativeLayout>
-<!--Try to make only one top layout and then constraint so it doesn't fucking die-->
-    <RelativeLayout
-        android:id="@+id/middle_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/current_finances_state">
-
-        <TextView
-            android:id="@+id/transactions_text"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/middle_menu"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_family"
-            android:text="@string/transactions"
-            android:textColor="@color/alice_blue"
-            android:textFontWeight="400"
-            android:textSize="20sp" />
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/current_finances_state">
 
-        <Button
-            android:id="@+id/add_transaction_button"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/add_transaction_button"
-            android:text="@string/new_transaction" />
+            <TextView
+                android:id="@+id/transactions_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_family"
+                android:text="@string/transactions"
+                android:textColor="@color/alice_blue"
+                android:textFontWeight="400"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/add_transaction_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/add_transaction_button"
+                android:text="@string/new_transaction" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
+<!--Try to make only one top layout and then constraint so it doesn't fucking die-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transactions_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:nestedScrollingEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/idkSomeSantaHelper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middle_menu"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/top_header"
         app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/idkSomeSantaHelper"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
-    <!--<androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/transactions_recycler_view"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:nestedScrollingEnabled="true"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactions_text" />-->
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
