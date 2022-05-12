@@ -84,6 +84,7 @@ public class AddWalletActivity extends AppCompatActivity {
             }
         });
 
+        // TODO: 5/11/22 Change storing resource's id and store string literals https://stackoverflow.com/questions/56134995/sqlite-database-cursor-is-returning-the-wrong-resource-ids
         addWalletButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

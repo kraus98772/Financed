@@ -22,15 +22,18 @@ public class WalletActivity extends AppCompatActivity {
     private Button addTransactionButton;
     private String walletName, walletCurrency;
 
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
     //  into different currency depending on current course ) ]
+
+    // TODO: 5/11/22 set default date in addTransaction to current day
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
+
 
         initViews();
         getInfoAboutWallet();
@@ -93,6 +96,13 @@ public class WalletActivity extends AppCompatActivity {
                 intent.putExtra("WALLET_NAME", walletName);
                 intent.putExtra("CURRENCY", walletCurrency);
                 startActivity(intent);
+                // TODO: 5/11/22 put it back together
+
+                /*Intent intent = new Intent(WalletActivity.this, TransactionsActivity.class);
+                intent.putExtra("WALLET_NAME", walletName);
+                intent.putExtra("CURRENCY", walletCurrency);
+                startActivity(intent);*/
+
             }
         });
     }
@@ -131,8 +141,8 @@ public class WalletActivity extends AppCompatActivity {
 
     void initRecyclerView()
     {
-        recyclerView = findViewById(R.id.transactions_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView = findViewById(R.id.transactions_recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         TransactionsRecyclerViewAdapter recyclerViewAdapter = new TransactionsRecyclerViewAdapter(this, transactions);
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -141,13 +151,15 @@ public class WalletActivity extends AppCompatActivity {
     void addTransactionsToRecyclerView()
     {
         DBHelper dbHelper = new DBHelper(this);
-        ArrayList<Transaction> temp = dbHelper.getTransactions(walletName);
-        for(int i = 0; i < temp.size(); i++)
+        transactions = dbHelper.getTransactions(walletName);
+        dbHelper.close();
+        /*for(int i = 0; i < temp.size(); i++)
         {
             System.out.println(i + ": ");
             System.out.println(temp.get(i).getTransactionValue());
-        }
+        }*/
         // TODO: 5/8/22 fix getTransactions
-        transactions = temp;
+        // TODO: 5/11/22 try making another activity for transactions
+
     }
 }

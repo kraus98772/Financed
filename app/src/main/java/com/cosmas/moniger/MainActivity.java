@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     void getWallets()
     {
         // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 5
+        // quick fix, add empty wallet to wallets array list at the end
         DBHelper dbHelper = new DBHelper(MainActivity.this);
         wallets = dbHelper.getWalletsArrayList();
         dbHelper.close();

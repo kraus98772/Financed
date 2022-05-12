@@ -14,6 +14,7 @@ import java.util.Date;
 
 public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<TransactionsRecyclerViewAdapter.ViewHolder> {
 
+    public static final String TAG = "TransactionsRecyclerViewAdapter";
     private Context mContext;
     private ArrayList<Transaction> transactions = new ArrayList<>();
 
@@ -54,6 +55,4 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
             transactionDate = itemView.findViewById(R.id.transaction_date_holder);
         }
     }
-
-
 }

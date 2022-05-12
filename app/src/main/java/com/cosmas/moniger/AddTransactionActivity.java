@@ -18,6 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,6 +31,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     private TextView dateText;
 
     private RelativeLayout datePicker;
+    private LocalDateTime todayDate;
     private SimpleDate currentlySetDate;
 
     private String walletName, walletCurrency;
@@ -46,6 +49,9 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
 
         initViews();
         getInfoAboutWallet();
+        // Initializing degault date as today
+        todayDate = LocalDateTime.now();
+        currentlySetDate = new SimpleDate(todayDate.getDayOfMonth(), todayDate.getMonthValue() - 1, todayDate.getYear());
 
         setUpGoBackButton(walletName, walletCurrency);
 
@@ -133,11 +139,21 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         addTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DBHelper dbHelper = new DBHelper(AddTransactionActivity.this);
-                dbHelper.addTransaction(walletName,
-                        new Transaction(Double.parseDouble(valueEditText.getText().toString()),
-                                currentlySetDate, "", ""));
-                goBack(walletName, walletCurrency);
+
+                double transactionValue = Double.parseDouble(valueEditText.getText().toString());
+
+                if(transactionValue == 0)
+                {
+                    Toast.makeText(AddTransactionActivity.this, "Transaction value can't be 0", Toast.LENGTH_SHORT).show();
+                }else
+                {
+                    DBHelper dbHelper = new DBHelper(AddTransactionActivity.this);
+                    dbHelper.addTransaction(walletName,
+                            new Transaction(transactionValue,
+                                    currentlySetDate, "", ""));
+                    goBack(walletName, walletCurrency);
+                }
+
             }
         });
     }

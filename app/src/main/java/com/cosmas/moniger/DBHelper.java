@@ -69,6 +69,31 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE " + createWalletTransactionsTableName(walletName));
     }
 
+    // TODO: 5/10/22 add remove transaction feature
+    public ArrayList<Transaction> getTransactions(String walletName)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + walletTransactionsTableName, null);
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        if(cursor.moveToFirst())
+        {
+            do {
+                double value = cursor.getDouble(1);
+                int day = cursor.getInt(2);
+                int month = cursor.getInt(3);
+                int year = cursor.getInt(4);
+                SimpleDate date = new SimpleDate(day, month, year);
+                Transaction transaction = new Transaction(value, date, "", "");
+                transactions.add(transaction);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        Collections.reverse(transactions);
+        return transactions;
+    }
+
     public ArrayList<Wallet> getWalletsArrayList()
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -115,31 +140,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
 
         db.insert(walletTransactionsTableName, null, values);
-    }
-
-    // TODO: 5/10/22 add remove transaction feature
-    public ArrayList<Transaction> getTransactions(String walletName)
-    {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
-        Cursor cursor = db.rawQuery("SELECT * FROM " + walletTransactionsTableName, null);
-        ArrayList<Transaction> transactions = new ArrayList<>();
-
-        if(cursor.moveToFirst())
-        {
-            do {
-                double value = cursor.getDouble(1);
-                int day = cursor.getInt(2);
-                int month = cursor.getInt(3);
-                int year = cursor.getInt(4);
-                SimpleDate date = new SimpleDate(day, month, year);
-                Transaction transaction = new Transaction(value, date, "", "");
-                transactions.add(transaction);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-        Collections.reverse(transactions);
-        return transactions;
     }
 
     public String createWalletTransactionsTableName(String walletName)
