@@ -5,11 +5,21 @@ public class Wallet {
     private String walletCurrency;
     private String walletName;
     private int image;
+    private String walletImageName;
 
     public Wallet(String walletCurrency, String walletName, int image) {
         this.walletCurrency = walletCurrency;
         this.walletName = walletName;
         this.image = image;
+        this.walletImageName = WalletImage.getImageName(image);
+    }
+
+    public Wallet(String walletCurrency, String walletName, String walletImageName)
+    {
+        this.walletCurrency = walletCurrency;
+        this.walletName = walletName;
+        this.walletImageName = walletImageName;
+        this.image = WalletImage.getImage(walletImageName);
     }
 
     public void setWalletId(int walletId) {
@@ -38,6 +48,10 @@ public class Wallet {
 
     public int getImage() {
         return image;
+    }
+
+    public String getWalletImageName() {
+        return walletImageName;
     }
 
     public void setImage(int image) {

@@ -1,5 +1,6 @@
 package com.cosmas.moniger;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,27 +8,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 
 public class CategorySpinnerAdapter extends BaseAdapter {
 
-    private Context mContext;
-    private ArrayList<String> categories;
+    private String[] categories = {"Food", "Drinks", "Services", "Bills", "Income"};
 
-    public CategorySpinnerAdapter(Context mContext, ArrayList<String> categories) {
-        this.mContext = mContext;
-        this.categories = categories;
+    public CategorySpinnerAdapter() {
     }
 
     @Override
     public int getCount() {
-        return categories != null ? categories.size() : 0;
+        return categories != null ? categories.length : 0;
     }
 
     @Override
     public Object getItem(int i) {
-        return categories.get(i);
+        return categories[i];
     }
 
     @Override
@@ -37,10 +33,10 @@ public class CategorySpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View rootView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_item, viewGroup, false);
-        TextView categoryView = viewGroup.findViewById(R.id.category);
+        @SuppressLint("ViewHolder") View rootView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_item, viewGroup, false);
+        TextView category = rootView.findViewById(R.id.category_name);
 
-        categoryView.setText(categories.get(i));
+        category.setText(categories[i]);
         return rootView;
     }
 }

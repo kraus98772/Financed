@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "( " + ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COLUMN + " TEXT, "
                 + CURRENCY_COLUMN + " TEXT, "
-                + IMAGE_COLUMN + " INTEGER)";
+                + IMAGE_COLUMN + " TEXT)";
 
         sqLiteDatabase.execSQL(query);
     }
@@ -56,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(NAME_COLUMN, wallet.getWalletName());
         values.put(CURRENCY_COLUMN, wallet.getWalletCurrency());
-        values.put(IMAGE_COLUMN, wallet.getImage());
+        values.put(IMAGE_COLUMN, wallet.getWalletImageName());
 
         db.insert(WALLETS_TABLE_NAME, null, values);
 
@@ -131,9 +131,9 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                 String walletName = cursor.getString(1);
                 String walletCurrency = cursor.getString(2);
-                int walletImage = cursor.getInt(3);
+                String walletImageName = cursor.getString(3);
 
-                walletsArrayList.add(new Wallet(walletCurrency, walletName, walletImage));
+                walletsArrayList.add(new Wallet(walletCurrency, walletName, walletImageName));
 
             } while(cursor.moveToNext());
         }

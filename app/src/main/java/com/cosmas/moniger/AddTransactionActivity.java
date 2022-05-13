@@ -31,15 +31,13 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     private Button addTransactionButton;
     private EditText valueEditText;
     private TextView dateText;
-    private Spinner categoryDropdown;
-    private CategorySpinnerAdapter adapter;
+    private Spinner categorySpinner;
 
     private RelativeLayout datePicker;
     private LocalDateTime todayDate;
     private SimpleDate currentlySetDate;
 
     private String walletName, walletCurrency;
-    private ArrayList<String> categories = new ArrayList<>();
 
     // Variables for on hold buttons
     Handler handler = new Handler();
@@ -52,6 +50,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
 
         initViews();
         getInfoAboutWallet();
+
         // Initializing default date as today
         todayDate = LocalDateTime.now();
         currentlySetDate = new SimpleDate(todayDate.getDayOfMonth(), todayDate.getMonthValue() - 1, todayDate.getYear());
@@ -63,9 +62,8 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         setupSubtractValueButton();
         setupDatePicker();
 
-        addCategories();
-        adapter = new CategorySpinnerAdapter(AddTransactionActivity.this, categories);
-        categoryDropdown.setAdapter(adapter);
+        categorySpinner = findViewById(R.id.category_spinner);
+        categorySpinner.setAdapter(new CategorySpinnerAdapter());
 
         setupAddTransactionButton(walletName, walletCurrency);
 
@@ -79,13 +77,11 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         datePicker = findViewById(R.id.date_picker);
         dateText = findViewById(R.id.date_text);
         addTransactionButton = findViewById(R.id.add_transaction_button);
-        categoryDropdown = findViewById(R.id.category_spinner);
     }
 
     void setupValueEditText() {
         valueEditText.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
     }
-
 
     void setupAddValueButton() {
         addValueButton.setOnClickListener(new View.OnClickListener() {
@@ -211,14 +207,6 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
 
     // TODO: 5/12/22 Move static array lists from java to xml
 
-    void addCategories()
-    {
-        categories.add("Food");
-        categories.add("Drinks");
-        categories.add("Services");
-        categories.add("Bills");
-        categories.add("Income");
-    }
 
     void goBack(String walletName, String walletCurrency)
     {

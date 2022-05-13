@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 public class AddWalletActivity extends AppCompatActivity {
 
@@ -30,28 +29,52 @@ public class AddWalletActivity extends AppCompatActivity {
     private boolean isCashImageSelected = false;
 
     // Holds the currencies (items) for the spinner
-    private ArrayList<String> currenciesNames = new ArrayList<>();
-    private ArrayList<String> currenciesSymbols = new ArrayList<>();
+    private final String[] currencyNames = {Currency.USD, Currency.EUR, Currency.GBP, Currency.JPY, Currency.PLN};
+    private final String[] currencySymbols = {Currency.USD_SYMBOL, Currency.EUR_SYMBOL, Currency.GBP_SYMBOL, Currency.JPY_SYMBOL, Currency.PLN_SYMBOL};
 
+    // TODO: 5/13/22 Store names of drawables in database and create a function to retrieve resource id depending on the name instead of storing ids
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_wallet);
 
-        addCurrencies();
         initViews();
-        // TODO: 5/12/22 move things to separate functions
-        goBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
-            }
-        });
 
-        spinnerAdapter = new CurrencySpinnerAdapter(AddWalletActivity.this, currenciesNames, currenciesSymbols);
+        setupGoBackButton();
+
+        setupSpinnerAdapter();
+
         currencyChoiceDropdownList.setAdapter(spinnerAdapter);
 
+        setupImageChoice();
+        // TODO: 5/11/22 Change storing resource's id and store string literals https://stackoverflow.com/questions/56134995/sqlite-database-cursor-is-returning-the-wrong-resource-ids
+
+        setupAddWalletButton();
+    }
+
+    void initViews()
+    {
+        goBackButton = findViewById(R.id.go_back_button);
+        walletNameEditText = findViewById(R.id.edit_text_wallet_name);
+        currencyChoiceDropdownList = findViewById(R.id.dropdown_currency_spinner);
+        image_wallet = findViewById(R.id.image_wallet);
+        image_cash = findViewById(R.id.image_cash);
+        addWalletButton = findViewById(R.id.add_wallet_button);
+    }
+
+    void setupSpinnerAdapter()
+    {
+        spinnerAdapter = new CurrencySpinnerAdapter(currencyNames, currencySymbols);
+    }
+
+    void setupGoBackButton()
+    {
+        goBackButton.setOnClickListener(view -> startActivity(new Intent(AddWalletActivity.this, MainActivity.class)));
+    }
+
+    void setupImageChoice()
+    {
         image_wallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +98,7 @@ public class AddWalletActivity extends AppCompatActivity {
 
                     isCashImageSelected = true;
                     image_cash.setBackgroundResource(R.drawable.wallet_image_background_selected);
-                    selected_image = WalletImage.DOLAR_CASH_IMAGE;
+                    selected_image = WalletImage.DOLLAR_CASH_IMAGE;
 
                     isWalletImageSelected = false;
                     image_wallet.setBackgroundResource(R.drawable.wallet_image_background);
@@ -83,8 +106,10 @@ public class AddWalletActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        // TODO: 5/11/22 Change storing resource's id and store string literals https://stackoverflow.com/questions/56134995/sqlite-database-cursor-is-returning-the-wrong-resource-ids
+    void setupAddWalletButton()
+    {
         addWalletButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,43 +126,13 @@ public class AddWalletActivity extends AppCompatActivity {
                 startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
             }
         });
-
-    }
-
-    void initViews()
-    {
-        goBackButton = findViewById(R.id.go_back_button);
-        walletNameEditText = findViewById(R.id.edit_text_wallet_name);
-        currencyChoiceDropdownList = findViewById(R.id.dropdown_currency_spinner);
-        image_wallet = findViewById(R.id.image_wallet);
-        image_cash = findViewById(R.id.image_cash);
-        addWalletButton = findViewById(R.id.add_wallet_button);
-    }
-    void addCurrencies()
-    {
-        currenciesNames.add(Currency.USD);
-        currenciesSymbols.add(Currency.USD_SYMBOL);
-
-        currenciesNames.add(Currency.GBP);
-        currenciesSymbols.add(Currency.GBP_SYMBOL);
-
-        currenciesNames.add(Currency.EUR);
-        currenciesSymbols.add(Currency.EUR_SYMBOL);
-
-        currenciesNames.add(Currency.JPY);
-        currenciesSymbols.add(Currency.JPY_SYMBOL);
-
-        currenciesNames.add(Currency.PLN);
-        currenciesSymbols.add(Currency.PLN_SYMBOL);
     }
 
     boolean areFieldsValid(String name, String currency, int image)
     {
         if (name.isEmpty() || name.charAt(0) == ' ') { return false; }
         if(currency.isEmpty()) { return false; }
-        if (image == 0) { return false; }
-
-        return true;
+        return image != 0;
     }
 
 }
