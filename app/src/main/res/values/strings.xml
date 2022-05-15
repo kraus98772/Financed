@@ -15,4 +15,7 @@
     <string name="new_transaction">+ new</string>
     <string name="value">Value</string>
     <string name="new_transaction_header">New Transaction</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="do_you_really_want_to_remove_this_wallet">Do you really want to remove this wallet ?</string>
 </resources>

@@ -12,8 +12,8 @@ import android.widget.TextView;
 public class WalletSettingsActivity extends AppCompatActivity {
 
     private ImageButton goBackButton;
-    private TextView removeWalletButton, confirmWalletRemovalButton, cancelWalletRemovalButton;
-    private RelativeLayout popUpRemoveWallet;
+    private TextView confirmWalletRemovalButton, cancelWalletRemovalButton;
+    private RelativeLayout removeWalletButton, popUpRemoveWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

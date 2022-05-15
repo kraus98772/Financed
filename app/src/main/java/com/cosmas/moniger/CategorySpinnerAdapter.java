@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class CategorySpinnerAdapter extends BaseAdapter {
 
-    private String[] categories = {"Food", "Drinks", "Services", "Bills", "Income"};
+    private String[] categories = {"Food", "Drinks", "Services", "Bills", "Income", "Other"};
 
     public CategorySpinnerAdapter() {
     }

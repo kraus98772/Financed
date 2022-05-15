@@ -132,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rubik_family"
-        android:text="Category"
+        android:text="@string/category"
         android:textColor="@color/alice_blue"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/date_picker"
@@ -155,8 +155,8 @@
         android:id="@+id/description_header"
         app:layout_constraintTop_toBottomOf="@+id/category_spinner"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Description"
-        android:layout_marginTop="30dp"
+        android:text="@string/description"
+        android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:textColor="@color/alice_blue"/>
 
@@ -164,13 +164,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/description"
-        android:minLines="7"
-        android:maxLines="7"
-        android:maxLength="200"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:minLines="3"
+        android:gravity="top|start"
+        android:maxLines="3"
+        android:inputType="textMultiLine"
+        android:textColor="@color/alice_blue"
+        android:maxLength="100"
         android:layout_marginTop="7dp"
         app:layout_constraintTop_toBottomOf="@+id/description_header"
-        android:background="@drawable/description_field"/>
-
+        android:background="@drawable/description_field"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/add_transaction_button"

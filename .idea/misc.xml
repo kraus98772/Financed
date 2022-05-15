@@ -12,7 +12,9 @@
         <entry key="app/src/main/res/drawable/date_field_active.xml" value="0.1505" />
         <entry key="app/src/main/res/drawable/date_picker_bacgkround.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/date_picker_background.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable/description_field.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/edit_text_no_handles.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/ic_bin.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/ic_calendar_2.xml" value="0.191" />
         <entry key="app/src/main/res/drawable/ic_dolar_cash_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/ic_gear.xml" value="0.3075" />
@@ -32,13 +34,14 @@
         <entry key="app/src/main/res/drawable/wallet_image_background.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/wallet_image_background_selected.xml" value="0.2745" />
         <entry key="app/src/main/res/drawable/wallet_item_background.xml" value="0.2855" />
+        <entry key="app/src/main/res/drawable/yes_button.xml" value="0.13" />
         <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.28442028985507245" />
         <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_wallet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_transactions.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_wallet.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_wallet_settings.xml" value="0.24954710144927536" />
+        <entry key="app/src/main/res/layout/activity_wallet_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/category_item.xml" value="0.3515625" />
         <entry key="app/src/main/res/layout/currency_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/transaction_item.xml" value="0.33" />
