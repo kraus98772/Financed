@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Moniger</string>
+    <string name="app_name" translatable="false">Moniger</string>
     <string name="my_wallets_header">My Wallets</string>
     <string name="wallet_name_holder">Name</string>
-    <string name="transaction_date_holder">01.01.2022</string>
-    <string name="value_holder">10000</string>
-    <string name="currency_holder">$</string>
+    <string name="transaction_date_holder" translatable="false">01.01.2022</string>
+    <string name="value_holder" translatable="false">10000</string>
+    <string name="currency_holder" translatable="false">$</string>
     <string name="new_wallet">New Wallet</string>
-    <string name="currency_item_holder">$ USD</string>
+    <string name="currency_item_holder" translatable="false">$ USD</string>
     <string name="transactions">Transactions</string>
-    <string name="add_wallet">+ Add Wallet</string>
+    <string name="add_wallet">+ New Wallet</string>
     <string name="confirm">Confirm</string>
     <string name="choose_wallet_image">Choose wallet image</string>
     <string name="remove_wallet">Remove Wallet</string>
@@ -17,5 +17,7 @@
     <string name="new_transaction_header">New Transaction</string>
     <string name="description">Description</string>
     <string name="category">Category</string>
-    <string name="do_you_really_want_to_remove_this_wallet">Do you really want to remove this wallet ?</string>
+    <string name="remove_wallet_warning">Do you really want to remove this wallet ?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

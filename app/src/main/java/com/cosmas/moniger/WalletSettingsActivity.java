@@ -38,8 +38,8 @@ public class WalletSettingsActivity extends AppCompatActivity {
         goBackButton = findViewById(R.id.go_back_button);
         removeWalletButton = findViewById(R.id.remove_wallet_button);
         popUpRemoveWallet = findViewById(R.id.remove_wallet_popup);
-        confirmWalletRemovalButton = findViewById(R.id.confirm_remove_wallet_button);
-        cancelWalletRemovalButton = findViewById(R.id.cancel_remove_wallet_button);
+        confirmWalletRemovalButton = findViewById(R.id.popup_confirm_button);
+        cancelWalletRemovalButton = findViewById(R.id.popup_deny_button);
     }
 
     void setUpGoBackButton(String walletName, String walletCurrency)

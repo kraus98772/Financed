@@ -26,6 +26,8 @@
         <entry key="app/src/main/res/drawable/ic_wallet_image.xml" value="0.2855" />
         <entry key="app/src/main/res/drawable/popup.xml" value="0.2735" />
         <entry key="app/src/main/res/drawable/popup_background.xml" value="0.2735" />
+        <entry key="app/src/main/res/drawable/popup_confirm_button.xml" value="0.1905" />
+        <entry key="app/src/main/res/drawable/popup_deny_button.xml" value="0.1905" />
         <entry key="app/src/main/res/drawable/test_spinner_styling.xml" value="0.13" />
         <entry key="app/src/main/res/drawable/transaction_background.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/transaction_value_input.xml" value="0.1905" />

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="my_wallets_header">Moje Portfele</string>
+    <string name="wallet_name_holder">Nazwa</string>
+    <string name="new_wallet">Nowy Portfel</string>
+    <string name="transactions">Transakcje</string>
+    <string name="add_wallet">+ Nowy Portfel</string>
+    <string name="confirm">Potwierdź</string>
+    <string name="choose_wallet_image">Wybierz ikonę portfela</string>
+    <string name="remove_wallet">Usuń Portfel</string>
+    <string name="new_transaction">+ nowy</string>
+    <string name="value">Wartość</string>
+    <string name="new_transaction_header">Nowa transakcja</string>
+    <string name="description">Opis</string>
+    <string name="category">Kategoria</string>
+    <string name="remove_wallet_warning">Czy na prawdę chcesz usunąć ten portfel ?</string>
+    <string name="no">Nie</string>
+    <string name="yes">Tak</string>
+</resources>
