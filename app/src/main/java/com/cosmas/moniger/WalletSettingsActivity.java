@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class WalletSettingsActivity extends AppCompatActivity {
 
     private ImageButton goBackButton;
-    private TextView confirmWalletRemovalButton, cancelWalletRemovalButton;
+    private Button confirmWalletRemovalButton, cancelWalletRemovalButton;
     private RelativeLayout removeWalletButton, popUpRemoveWallet;
 
     @Override

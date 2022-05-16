@@ -20,4 +20,6 @@
     <string name="remove_wallet_warning">Do you really want to remove this wallet ?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="transaction_date_header">Transaction date:</string>
+    <string name="category_name_holder">Other</string>
 </resources>

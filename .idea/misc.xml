@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_add_transaction.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_wallet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_transaction.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_transactions.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_wallet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_wallet_settings.xml" value="0.33" />

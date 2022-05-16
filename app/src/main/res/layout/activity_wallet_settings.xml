@@ -93,9 +93,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/warning_text"
             android:weightSum="2"
+
             android:orientation="horizontal">
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/popup_confirm_button"
@@ -103,15 +104,18 @@
                 android:text="@string/yes"
                 android:paddingVertical="12dp"
                 android:textAlignment="center"
+                android:textAllCaps="false"
                 android:textColor="@color/alice_blue"
                 android:background="@drawable/popup_confirm_button"/>
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
+                android:soundEffectsEnabled="true"
                 android:id="@+id/popup_deny_button"
+                android:textAllCaps="false"
                 android:paddingVertical="12dp"
                 android:textColor="@color/alice_blue"
                 android:textAlignment="center"
