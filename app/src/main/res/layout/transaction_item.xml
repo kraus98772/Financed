@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/raisin_black">
+    android:background="@drawable/wallet_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/alice_blue"/>
+            android:background="@color/text_color"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_family"
                 android:text="@string/value_holder"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/text_color"
                 android:textSize="18sp" />
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_marginStart="5dp"
                 android:fontFamily="@font/rubik_family"
                 android:text="$"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/text_color"
                 android:textSize="18sp"
                 android:visibility="invisible"
                 app:layout_constraintLeft_toRightOf="@+id/transaction_value_holder" />
@@ -49,18 +49,12 @@
                 android:layout_marginLeft="50dp"
                 android:fontFamily="@font/rubik_family"
                 android:text="01.01.2022"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/text_color"
                 android:textSize="18sp"
                 app:layout_constraintRight_toRightOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--<View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/alice_blue" />-->
-
     </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

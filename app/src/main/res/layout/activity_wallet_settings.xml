@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WalletSettingsActivity"
-    android:background="@color/raisin_black">
+    android:background="@color/background">
 
     <RelativeLayout
         android:id="@+id/top_menu"
@@ -66,7 +66,6 @@
         android:layout_height="match_parent"
         android:id="@+id/remove_wallet_popup"
         android:visibility="gone"
-        android:background="@drawable/popup_background"
         android:padding="50dp">
 
         <RelativeLayout
@@ -83,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_family"
                 android:text="@string/remove_wallet_warning"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/popup_text"
                 android:textSize="18sp" />
 
         </RelativeLayout>
@@ -105,7 +104,7 @@
                 android:paddingVertical="12dp"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/popup_text"
                 android:background="@drawable/popup_confirm_button"/>
 
             <Button
@@ -117,7 +116,7 @@
                 android:id="@+id/popup_deny_button"
                 android:textAllCaps="false"
                 android:paddingVertical="12dp"
-                android:textColor="@color/alice_blue"
+                android:textColor="@color/popup_text"
                 android:textAlignment="center"
                 android:background="@drawable/popup_deny_button"/>
 

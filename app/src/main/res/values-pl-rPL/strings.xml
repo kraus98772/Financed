@@ -16,4 +16,7 @@
     <string name="remove_wallet_warning">Czy na prawdę chcesz usunąć ten portfel ?</string>
     <string name="no">Nie</string>
     <string name="yes">Tak</string>
+    <string name="transaction_date_header">Data transakcji:</string>
+    <string name="category_name_holder">Inne</string>
+    <string name="remove_transcation_warning">Czy na prawdę chcesz usunąć tę transakcję ?</string>
 </resources>

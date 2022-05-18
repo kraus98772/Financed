@@ -14,7 +14,7 @@
         android:fontFamily="@font/rubik_family"
         android:text="@string/my_wallets_header"
         android:id="@+id/my_wallets_header"
-        android:textColor="@color/alice_blue"
+        android:textColor="@color/text_color"
         android:textFontWeight="500"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         android:id="@+id/bottom_menu"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/wallet_choice_background">
+        app:layout_constraintRight_toRightOf="parent">
 
         <Button
             android:id="@+id/add_wallet_button"
@@ -51,7 +50,7 @@
             android:paddingVertical="14dp"
             android:text="@string/add_wallet"
             android:textAllCaps="false"
-            android:textColor="@color/raisin_black"
+            android:textColor="@color/on_button_color"
             android:textFontWeight="600"
             android:textSize="17dp" />
 

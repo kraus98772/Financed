@@ -1,11 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Moniger" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/raisin_black</item>
-        <item name="colorAccent">@color/raisin_black</item>
-        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/background</item>
+
+        <item name="android:windowBackground">@color/background</item>
+
+        <item name="android:colorAccent">@color/background</item>
+
+        <!--
+
+    colorPrimary – The color of the app bar.
+    colorPrimaryDark – The color of the status bar and contextual app bars; this is normally a dark version of colorPrimary.
+    colorAccent – The color of UI controls such as check boxes, radio buttons, and edit text boxes.
+    windowBackground – The color of the screen background.
+    textColorPrimary – The color of UI text in the app bar.
+    statusBarColor – The color of the status bar.
+    navigationBarColor – The color of the navigation bar.
+
+        -->
+
     </style>
 </resources>

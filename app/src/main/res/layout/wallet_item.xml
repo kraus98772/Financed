@@ -6,7 +6,7 @@
     android:layout_height="90dp"
     android:id="@+id/wallet_card_view"
     app:cardCornerRadius="7dp"
-    android:backgroundTint="@color/alice_blue"
+    android:backgroundTint="@color/button_color"
     android:elevation="5dp"
     android:layout_marginBottom="20dp">
 
@@ -30,7 +30,7 @@
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@id/wallet_image"
             android:text="Name"
-            android:textColor="@color/raisin_black"
+            android:textColor="@color/on_button_color"
             android:textSize="20sp" />
 
     </RelativeLayout>

@@ -4,9 +4,9 @@
     android:viewportWidth="23.46"
     android:viewportHeight="19.02">
   <path
-      android:fillColor="@color/raisin_black"
+      android:fillColor="@color/on_button_color"
       android:pathData="M22.17,7.53L22.17,2a2,2 0,0 0,-2 -2L2,0A2,2 0,0 0,0 2L0,17.05a2,2 0,0 0,2 2L20.2,19.05a2,2 0,0 0,2 -2L22.2,13.51a1.41,1.41 0,0 0,1.29 -1.4L23.49,8.94A1.41,1.41 0,0 0,22.17 7.53ZM2,1L20.2,1a1,1 0,0 1,1 1v0.32a1.94,1.94 0,0 0,-1 -0.27L2,2.05a1.94,1.94 0,0 0,-1 0.27L1,2A1,1 0,0 1,2 1ZM20.2,18L2,18a1,1 0,0 1,-1 -1L1,4A1,1 0,0 1,2 3L20.2,3a1,1 0,0 1,1 1L21.2,7.52L16.46,7.52a3,3 0,0 0,0 6h4.71v3.53A1,1 0,0 1,20.2 18ZM22.46,12.08a0.42,0.42 0,0 1,-0.42 0.42L16.46,12.5a2,2 0,0 1,0 -4L22,8.5a0.42,0.42 0,0 1,0.42 0.42Z"/>
   <path
-      android:fillColor="@color/raisin_black"
+      android:fillColor="@color/on_button_color"
       android:pathData="M16.5,10.42m-0.82,0a0.82,0.82 0,1 1,1.64 0a0.82,0.82 0,1 1,-1.64 0"/>
 </vector>

@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="7dp"
-    android:background="@color/raisin_black">
+    android:padding="7dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/currency_symbol"
-            android:textColor="@color/alice_blue"
+            android:textColor="@color/text_color"
             android:textSize="18dp"
             android:layout_marginRight="3dp"
             android:text="$"
@@ -27,7 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_family"
             android:text="USD"
-            android:textColor="@color/alice_blue"
+            android:textColor="@color/text_color"
             android:textFontWeight="500"
             android:textSize="18dp" />
 

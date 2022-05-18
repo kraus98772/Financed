@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="7dp"
-    android:background="@color/raisin_black">
+    android:padding="7dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,7 +15,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_family"
             android:text="Category"
-            android:textColor="@color/alice_blue"
+            android:textColor="@color/text_color"
             android:textFontWeight="500"
             android:textSize="18dp" />
 
