@@ -22,4 +22,5 @@
     <string name="yes">Yes</string>
     <string name="transaction_date_header">Transaction date:</string>
     <string name="category_name_holder">Other</string>
+    <string name="remove_transcation_warning">Do you really want to remove this transaction</string>
 </resources>

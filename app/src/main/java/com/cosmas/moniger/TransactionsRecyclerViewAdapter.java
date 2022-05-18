@@ -1,9 +1,12 @@
 package com.cosmas.moniger;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +20,13 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
     public static final String TAG = "TransactionsRecyclerViewAdapter";
     private Context mContext;
     private ArrayList<Transaction> transactions = new ArrayList<>();
+    private final String walletName, walletCurrency;
 
-    public TransactionsRecyclerViewAdapter(Context mContext, ArrayList<Transaction> transactions) {
+    public TransactionsRecyclerViewAdapter(Context mContext, ArrayList<Transaction> transactions, String walletName, String walletCurrency) {
         this.mContext = mContext;
         this.transactions = transactions;
+        this.walletName = walletName;
+        this.walletCurrency = walletCurrency;
     }
 
     @NonNull
@@ -36,6 +42,12 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
         DateTextFormatter dateTextFormatter = new DateTextFormatter();
         String transactionDateText = dateTextFormatter.formatText(transactions.get(position).getTransactionDate(), ".");
         holder.transactionDate.setText(transactionDateText);
+        holder.transactionLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTransactionActivity(transactions.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -43,16 +55,36 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
         return transactions != null ? transactions.size() : 0;
     }
 
+
+    public void openTransactionActivity(Transaction transaction)
+    {
+        DBHelper dbHelper = new DBHelper(mContext);
+        String category = dbHelper.getTransactionContent(walletName, transaction).getCategory();
+        String description = dbHelper.getTransactionContent(walletName, transaction).getDescription();
+
+        Intent intent = new Intent(mContext, TransactionActivity.class);
+        intent.putExtra("WALLET_NAME", walletName);
+        intent.putExtra("CURRENCY", walletCurrency);
+        intent.putExtra("VALUE", transaction.getTransactionValue());
+        intent.putExtra("DATE", transaction.getTransactionDate().toString());
+        intent.putExtra("CATEGORY", category);
+        intent.putExtra("DESCRIPTION", description);
+        intent.putExtra("ID", transaction.getId());
+        mContext.startActivity(intent);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder
     {
 
         TextView transactionValue, transactionCurrency, transactionDate;
+        RelativeLayout transactionLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             transactionValue = itemView.findViewById(R.id.transaction_value_holder);
             //transactionCurrency = itemView.findViewById(R.id.transaction_currency_holder);
             transactionDate = itemView.findViewById(R.id.transaction_date_holder);
+            transactionLayout = itemView.findViewById(R.id.transaction_layout);
         }
     }
 }

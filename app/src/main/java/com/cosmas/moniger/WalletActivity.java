@@ -35,8 +35,8 @@ public class WalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wallet);
 
 
-        initViews();
         getInfoAboutWallet();
+        initViews();
 
         addTransactionsToRecyclerView();
 
@@ -62,21 +62,7 @@ public class WalletActivity extends AppCompatActivity {
     void setCurrencyView(String currency)
     {
         currencyView = findViewById(R.id.wallet_currency);
-        switch(currency)
-        {
-            case "EUR":
-                currencyView.setText("€");
-                break;
-            case "PLN":
-                currencyView.setText("zł");
-                break;
-            case "USD":
-                currencyView.setText("$");
-                break;
-            case "JPY":
-                currencyView.setText("¥");
-                break;
-        }
+        currencyView.setText(Currency.getCurrencySign(walletCurrency));
     }
 
     void initViews()
@@ -96,16 +82,10 @@ public class WalletActivity extends AppCompatActivity {
                 intent.putExtra("WALLET_NAME", walletName);
                 intent.putExtra("CURRENCY", walletCurrency);
                 startActivity(intent);
-                // TODO: 5/11/22 put it back together
-
-                /*Intent intent = new Intent(WalletActivity.this, TransactionsActivity.class);
-                intent.putExtra("WALLET_NAME", walletName);
-                intent.putExtra("CURRENCY", walletCurrency);
-                startActivity(intent);*/
-
             }
         });
     }
+
     void setupGoBackButton()
     {
         goBackButton.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +124,7 @@ public class WalletActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView = findViewById(R.id.transactions_recycler_view);
         recyclerView.setLayoutManager(layoutManager);
-        TransactionsRecyclerViewAdapter recyclerViewAdapter = new TransactionsRecyclerViewAdapter(this, transactions);
+        TransactionsRecyclerViewAdapter recyclerViewAdapter = new TransactionsRecyclerViewAdapter(this, transactions, walletName, walletCurrency);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -153,13 +133,6 @@ public class WalletActivity extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(this);
         transactions = dbHelper.getTransactions(walletName);
         dbHelper.close();
-        /*for(int i = 0; i < temp.size(); i++)
-        {
-            System.out.println(i + ": ");
-            System.out.println(temp.get(i).getTransactionValue());
-        }*/
-        // TODO: 5/8/22 fix getTransactions
-        // TODO: 5/11/22 try making another activity for transactions
 
     }
 }

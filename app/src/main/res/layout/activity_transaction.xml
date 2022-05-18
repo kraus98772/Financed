@@ -18,8 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/delete_transaction_button"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="#00ffffff"
+        android:src="@drawable/ic_bin_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:id="@+id/transaction_value"
+        android:id="@+id/transaction_value_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -29,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/go_back_button">
 
         <TextView
-            android:id="@+id/wallet_value"
+            android:id="@+id/transaction_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_family"
@@ -39,7 +48,7 @@
             android:textSize="32sp" />
 
         <TextView
-            android:id="@+id/wallet_currency"
+            android:id="@+id/transaction_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -59,7 +68,7 @@
         android:textColor="@color/alice_blue"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_value" />
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_view" />
 
     <TextView
         android:id="@+id/transaction_date_holder"
@@ -81,18 +90,18 @@
         android:layout_marginTop="40dp"
         android:text="@string/category"
         android:textColor="@color/alice_blue"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/transaction_date_holder" />
 
     <TextView
-        android:id="@+id/category_name"
+        android:id="@+id/category_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/category_name_holder"
         android:textColor="@color/alice_blue"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_header" />
@@ -104,12 +113,12 @@
         android:layout_marginTop="40dp"
         android:text="Description"
         android:textColor="@color/alice_blue"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_name" />
+        app:layout_constraintTop_toBottomOf="@+id/category_holder" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/description_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -119,4 +128,69 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/remove_wallet_popup"
+        android:visibility="gone"
+        android:background="@drawable/popup_background"
+        android:paddingHorizontal="40dp">
+
+        <RelativeLayout
+            android:id="@+id/warning_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/popup"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="30dp">
+
+            <TextView
+                android:id="@+id/confirmation_warning_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_family"
+                android:text="@string/remove_transcation_warning"
+                android:textColor="@color/alice_blue"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/warning_text"
+            android:weightSum="2"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/popup_confirm_button"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:paddingVertical="12dp"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/alice_blue"
+                android:background="@drawable/popup_confirm_button"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+                android:soundEffectsEnabled="true"
+                android:id="@+id/popup_deny_button"
+                android:textAllCaps="false"
+                android:paddingVertical="12dp"
+                android:textColor="@color/alice_blue"
+                android:textAlignment="center"
+                android:background="@drawable/popup_deny_button"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

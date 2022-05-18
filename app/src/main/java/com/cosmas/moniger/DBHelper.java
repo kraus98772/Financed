@@ -16,6 +16,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "WALLETS";
 
+    // All tables share ID_COLUMN
+
     // Constants for Table containing all the wallets
     private static final String WALLETS_TABLE_NAME = "WALLET_LIST";
     private static final String ID_COLUMN = "ID";
@@ -69,12 +71,17 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + WALLETS_TABLE_NAME + " WHERE " + NAME_COLUMN + "=\"" + walletName + "\"");
         db.execSQL("DROP TABLE " + createWalletTransactionsTableName(walletName));
+        db.close();
     }
 
     // TODO: 5/10/22 add remove transaction feature
-    public void removeTransaction(String walletName, Transaction transaction)
+    public void removeTransaction(String walletName, int transactionId)
     {
-
+        SQLiteDatabase db = this.getWritableDatabase();
+        String tableName = createWalletTransactionsTableName(walletName);
+        String query = "DELETE FROM " + tableName + " WHERE " + ID_COLUMN + "=" + transactionId;
+        db.execSQL(query);
+        db.close();
     }
     public ArrayList<Transaction> getTransactions(String walletName)
     {
@@ -99,6 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         Collections.reverse(transactions);
+        db.close();
         return transactions;
     }
 
@@ -116,9 +124,11 @@ public class DBHelper extends SQLiteOpenHelper {
         String description = cursor.getString(1);
         cursor.close();
 
+        db.close();
         return new TransactionContent(category, description);
     }
 
+    // TODO: 5/17/22 if there's a problem with db then check if db.close() is causing any problems
     public ArrayList<Wallet> getWalletsArrayList()
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -139,6 +149,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
+
+        db.close();
+
         return walletsArrayList;
     }
 
@@ -169,6 +182,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
 
         db.insert(walletTransactionsTableName, null, values);
+        db.close();
     }
 
     public String createWalletTransactionsTableName(String walletName)

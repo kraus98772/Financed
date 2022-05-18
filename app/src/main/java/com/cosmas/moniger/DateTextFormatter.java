@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DateTextFormatter {
 
-    public String formatText(SimpleDate date, String separator)
+    public static String formatText(SimpleDate date, String separator)
     {
         int day = date.getDay();
         // Increased by one because getMonth returns an index of a month which is between 0 and 11

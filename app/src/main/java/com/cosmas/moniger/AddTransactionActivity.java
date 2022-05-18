@@ -29,7 +29,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
 
     private ImageButton addValueButton, subtractValueButton, goBackButton;
     private Button addTransactionButton;
-    private EditText valueEditText;
+    private EditText valueEditText, descriptionView;
     private TextView dateText;
     private Spinner categorySpinner;
 
@@ -76,6 +76,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         valueEditText = findViewById(R.id.value_edit_text);
         datePicker = findViewById(R.id.date_picker);
         dateText = findViewById(R.id.date_text);
+        descriptionView = findViewById(R.id.description_holder);
         addTransactionButton = findViewById(R.id.add_transaction_button);
     }
 
@@ -152,7 +153,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
                     DBHelper dbHelper = new DBHelper(AddTransactionActivity.this);
                     dbHelper.addTransaction(walletName,
                             new Transaction(transactionValue,
-                                    currentlySetDate, "", ""));
+                                    currentlySetDate, categorySpinner.getSelectedItem().toString(), descriptionView.getText().toString()));
                     goBack(walletName, walletCurrency);
                 }
 

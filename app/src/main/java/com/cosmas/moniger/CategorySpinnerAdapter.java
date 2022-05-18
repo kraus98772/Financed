@@ -1,7 +1,6 @@
 package com.cosmas.moniger;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,7 @@ public class CategorySpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         @SuppressLint("ViewHolder") View rootView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.category_item, viewGroup, false);
-        TextView category = rootView.findViewById(R.id.category_name);
+        TextView category = rootView.findViewById(R.id.category_holder);
 
         category.setText(categories[i]);
         return rootView;

@@ -20,4 +20,9 @@ public class SimpleDate {
     public int getYear() {
         return year;
     }
+
+    @Override
+    public String toString() {
+        return DateTextFormatter.formatText(new SimpleDate(getDay(), getMonth(), getYear()), "/");
+    }
 }

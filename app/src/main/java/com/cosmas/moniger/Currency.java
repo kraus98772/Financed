@@ -16,4 +16,14 @@ public class Currency {
 
     static final String PLN = "PLN";
     static final String PLN_SYMBOL = "zl";
+
+    public static String getCurrencySign(String currency)
+    {
+        if(currency.equals("EUR")) return "€";
+        if(currency.equals("PLN")) return "zł";
+        if(currency.equals("USD")) return "$";
+        if(currency.equals("JPY")) return "¥";
+
+        return "";
+    }
 }
