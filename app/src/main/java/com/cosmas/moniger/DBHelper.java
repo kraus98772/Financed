@@ -83,6 +83,22 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         db.close();
     }
+
+    public boolean isNameAvailable(String walletName)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        String query = "SELECT * FROM " + WALLETS_TABLE_NAME + " WHERE " + NAME_COLUMN + "=" + walletName;
+        try {
+            Cursor cursor1 = cursor = db.rawQuery(query, null);
+        }catch (Exception e)
+        {
+            return true;
+        }
+        cursor.moveToFirst();
+        return (cursor.getInt(0) == 0);
+    }
+
     public ArrayList<Transaction> getTransactions(String walletName)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -122,8 +138,8 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         String category = cursor.getString(0);
         String description = cursor.getString(1);
-        cursor.close();
 
+        cursor.close();
         db.close();
         return new TransactionContent(category, description);
     }
@@ -153,6 +169,29 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         return walletsArrayList;
+    }
+
+    public ArrayList<String> getWalletNamesArrayList()
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + NAME_COLUMN + " FROM " + WALLETS_TABLE_NAME, null);
+
+        ArrayList<String> walletNamesArrayList = new ArrayList<>();
+
+        if(cursor.moveToFirst())
+        {
+            do {
+                String walletName = cursor.getString(0);
+                walletNamesArrayList.add(walletName);
+
+            } while(cursor.moveToNext());
+        }
+
+        cursor.close();
+
+        db.close();
+
+        return walletNamesArrayList;
     }
 
     public String createTransactionTableQuery(Wallet wallet)

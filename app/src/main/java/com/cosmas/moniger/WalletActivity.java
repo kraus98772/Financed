@@ -96,6 +96,11 @@ public class WalletActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(WalletActivity.this, MainActivity.class));
+    }
+
     void setupAddTransactionButton(String walletName, String walletCurrency)
     {
         addTransactionButton.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="my_wallets_header">Mis Carteras</string>
+    <string name="wallet_name_holder">Nombre</string>
+    <string name="new_wallet">Nueva Cartera</string>
+    <string name="transactions">Transacciones</string>
+    <string name="add_wallet">+ Nueva Cartera</string>
+    <string name="confirm">Confirmar</string>
+    <string name="choose_wallet_image">elija la imagen de cartera</string>
+    <string name="remove_wallet">Quitar la cartera</string>
+    <string name="new_transaction">+ Nueva</string>
+    <string name="value">Valor</string>
+    <string name="new_transaction_header">Nueva Transacción</string>
+    <string name="description">Descripción</string>
+    <string name="category">Categoría</string>
+    <string name="remove_wallet_warning">¿Realmente quieres eliminar esta cartera?</string>
+    <string name="no">No</string>
+    <string name="yes">Sí</string>
+    <string name="transaction_date_header">Fecha de la Transacción</string>
+    <string name="category_name_holder">Otro</string>
+    <string name="remove_transcation_warning">¿Realmente quieres eliminar esta transacción ?</string>
+
+    <string-array name="categories">
+        <item>Comida</item>
+        <item>Bebidas</item>
+        <item>Servicios</item>
+        <item>Facturas</item>
+        <item>Ingresos</item>
+        <item>Otros</item>
+    </string-array>
+
+</resources>

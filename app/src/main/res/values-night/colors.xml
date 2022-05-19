@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="button_color">#E1E5EE</color>
+    <color name="background">#272727</color>
+    <color name="background_dark">#252525</color>
+    <color name="on_button_color">#272727</color>
+    <color name="text_color">#E1E5EE</color>
+    <color name="calendar_background">#E1E5EE</color>
+    <color name="input_field">#E1E5EE</color>
+    <color name="description_field">#E1E5EE</color>
+    <color name="warning">#BB342F</color>
+    <color name="popup">#6A706E</color>
+    <color name="popup_text">#E1E5EE</color>
+    <color name="popup_deny">#606664</color>
+    <color name="selected">#6A706E</color>
+    <color name="hint">#6A706E</color>
+    <color name="text_highlight_color">#6A706E</color>
+
+</resources>
+
+

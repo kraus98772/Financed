@@ -23,4 +23,14 @@
     <string name="transaction_date_header">Transaction date:</string>
     <string name="category_name_holder">Other</string>
     <string name="remove_transcation_warning">Do you really want to remove this transaction</string>
+    
+    <string-array name="categories">
+        <item>Food</item>
+        <item>Drinks</item>
+        <item>Services</item>
+        <item>Bills</item>
+        <item>Income</item>
+        <item>Other</item>
+    </string-array>
+    
 </resources>

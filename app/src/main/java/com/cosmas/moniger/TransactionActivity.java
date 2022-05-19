@@ -1,7 +1,5 @@
 package com.cosmas.moniger;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class TransactionActivity extends AppCompatActivity {
@@ -78,12 +78,22 @@ public class TransactionActivity extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TransactionActivity.this, WalletActivity.class);
-                intent.putExtra("WALLET_NAME", walletName);
-                intent.putExtra("CURRENCY", walletCurrency);
-                startActivity(intent);
+                goBack();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
+
+    void goBack()
+    {
+        Intent intent = new Intent(TransactionActivity.this, WalletActivity.class);
+        intent.putExtra("WALLET_NAME", walletName);
+        intent.putExtra("CURRENCY", walletCurrency);
+        startActivity(intent);
     }
 
     void setupRemoveTransactionButton()

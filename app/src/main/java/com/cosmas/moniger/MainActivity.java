@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton settingsButton;
+    //private ImageButton settingsButton;
 
     private Button addWalletButton;
     private RecyclerView walletsRecyclerView;
@@ -22,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Wallet> wallets = new ArrayList<>();
 
     void initLayoutElements() {
-        //addWalletButton = findViewById(R.id.add_wallet_button);
         addWalletButton = findViewById(R.id.add_wallet_button);
-        settingsButton = findViewById(R.id.settings_wallet_button);
+        //settingsButton = findViewById(R.id.settings_wallet_button);
     }
 
     @Override
@@ -58,10 +57,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
     void getWallets()
     {
         // TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 5
-        // quick fix, add empty wallet to wallets array list at the end
+
         DBHelper dbHelper = new DBHelper(MainActivity.this);
         wallets = dbHelper.getWalletsArrayList();
         dbHelper.close();

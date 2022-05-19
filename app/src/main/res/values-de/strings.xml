@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="my_wallets_header">Meine Brieftaschen</string>
+    <string name="wallet_name_holder">Name</string>
+    <string name="new_wallet">Neue Brieftasche</string>
+    <string name="transactions">Transaktionen</string>
+    <string name="add_wallet">+ Neue Brieftasche</string>
+    <string name="confirm">Akzeptieren</string>
+    <string name="choose_wallet_image">Bild der Brieftasche wählen</string>
+    <string name="remove_wallet">Entfernen Sie die Brieftasche</string>
+    <string name="new_transaction">+ neue</string>
+    <string name="value">Wert</string>
+    <string name="new_transaction_header">Neue Transaktion</string>
+    <string name="description">Beschreibung</string>
+    <string name="category">Kategorie</string>
+    <string name="remove_wallet_warning">Möchten Sie diese Brieftasche wirklich entfernen?</string>
+    <string name="no">Nein</string>
+    <string name="yes">Ja</string>
+    <string name="transaction_date_header">Transaktionsdatum</string>
+    <string name="category_name_holder">Andere</string>
+    <string name="remove_transcation_warning">Möchten Sie diese Transaktion wirklich entfernen?</string>
+
+    <string-array name="categories">
+        <item>Essen</item>
+        <item>Getränke</item>
+        <item>Dienstleistungen</item>
+        <item>Rechnungen</item>
+        <item>Einkommen</item>
+        <item>Andere</item>
+    </string-array>
+
+</resources>

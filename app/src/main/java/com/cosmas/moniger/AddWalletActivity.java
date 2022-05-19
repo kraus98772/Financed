@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class AddWalletActivity extends AppCompatActivity {
 
@@ -32,7 +34,6 @@ public class AddWalletActivity extends AppCompatActivity {
     private final String[] currencyNames = {Currency.USD, Currency.EUR, Currency.GBP, Currency.JPY, Currency.PLN};
     private final String[] currencySymbols = {Currency.USD_SYMBOL, Currency.EUR_SYMBOL, Currency.GBP_SYMBOL, Currency.JPY_SYMBOL, Currency.PLN_SYMBOL};
 
-    // TODO: 5/13/22 Store names of drawables in database and create a function to retrieve resource id depending on the name instead of storing ids
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class AddWalletActivity extends AppCompatActivity {
         currencyChoiceDropdownList.setAdapter(spinnerAdapter);
 
         setupImageChoice();
-        // TODO: 5/11/22 Change storing resource's id and store string literals https://stackoverflow.com/questions/56134995/sqlite-database-cursor-is-returning-the-wrong-resource-ids
 
         setupAddWalletButton();
     }
@@ -70,7 +70,17 @@ public class AddWalletActivity extends AppCompatActivity {
 
     void setupGoBackButton()
     {
-        goBackButton.setOnClickListener(view -> startActivity(new Intent(AddWalletActivity.this, MainActivity.class)));
+        goBackButton.setOnClickListener(view -> goBack());
+    }
+
+    void goBack()
+    {
+        startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
     }
 
     void setupImageChoice()
@@ -108,25 +118,30 @@ public class AddWalletActivity extends AppCompatActivity {
         });
     }
 
+    // TODO: 5/19/22 Move the warnings to the string.xml and add translations
+    // TODO: 5/19/22 Check first if the wallet with the name already exists before adding it
     void setupAddWalletButton()
     {
+
         addWalletButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(!areFieldsValid(currencyChoiceDropdownList.getSelectedItem().toString(), walletNameEditText.getText().toString(), selected_image))
+                DBHelper dbHelper = new DBHelper(AddWalletActivity.this);
+                String chosenWalletName = walletNameEditText.getText().toString();
+                if(!areFieldsValid(currencyChoiceDropdownList.getSelectedItem().toString(), chosenWalletName, selected_image))
                 {
                     Toast.makeText(AddWalletActivity.this, "Fill all the fields", Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    DBHelper dbHelper = new DBHelper(AddWalletActivity.this);
                     dbHelper.addWallet(new Wallet(currencyChoiceDropdownList.getSelectedItem().toString(), walletNameEditText.getText().toString(), selected_image));
                     dbHelper.close();
+                    startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
                 }
-                startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
             }
         });
     }
+
+    //TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 5
 
     boolean areFieldsValid(String name, String currency, int image)
     {

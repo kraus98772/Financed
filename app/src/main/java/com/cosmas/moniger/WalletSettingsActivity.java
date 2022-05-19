@@ -47,12 +47,22 @@ public class WalletSettingsActivity extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WalletSettingsActivity.this, WalletActivity.class);
-                intent.putExtra("WALLET_NAME", walletName);
-                intent.putExtra("CURRENCY", walletCurrency);
-                startActivity(intent);
+                goBack(walletName, walletCurrency);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        goBack(getExtrasfromWalletActivity().getString("WALLET_NAME"), getExtrasfromWalletActivity().getString("CURRENCY"));
+    }
+
+    void goBack(String walletName, String walletCurrency)
+    {
+        Intent intent = new Intent(WalletSettingsActivity.this, WalletActivity.class);
+        intent.putExtra("WALLET_NAME", walletName);
+        intent.putExtra("CURRENCY", walletCurrency);
+        startActivity(intent);
     }
 
     void setUpRemoveWalletButton()

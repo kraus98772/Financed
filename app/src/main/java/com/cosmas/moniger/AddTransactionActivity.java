@@ -31,6 +31,7 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
     private Button addTransactionButton;
     private EditText valueEditText, descriptionView;
     private TextView dateText;
+    private String[] categories;
     private Spinner categorySpinner;
 
     private RelativeLayout datePicker;
@@ -51,6 +52,10 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         initViews();
         getInfoAboutWallet();
 
+        Bundle walletInfo = getInfoAboutWallet();
+        walletName = walletInfo.getString("WALLET_NAME");
+        walletCurrency = walletInfo.getString("CURRENCY");
+
         // Initializing default date as today
         todayDate = LocalDateTime.now();
         currentlySetDate = new SimpleDate(todayDate.getDayOfMonth(), todayDate.getMonthValue() - 1, todayDate.getYear());
@@ -63,7 +68,8 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         setupDatePicker();
 
         categorySpinner = findViewById(R.id.category_spinner);
-        categorySpinner.setAdapter(new CategorySpinnerAdapter());
+        categories = this.getResources().getStringArray(R.array.categories);
+        categorySpinner.setAdapter(new CategorySpinnerAdapter(categories));
 
         setupAddTransactionButton(walletName, walletCurrency);
 
@@ -161,10 +167,11 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         });
     }
 
-    void getInfoAboutWallet() {
+    Bundle getInfoAboutWallet() {
         Bundle walletInfo = getIntent().getExtras();
         walletName = walletInfo.getString("WALLET_NAME");
         walletCurrency = walletInfo.getString("CURRENCY");
+        return walletInfo;
     }
 
     void setupDatePicker() {
@@ -206,8 +213,10 @@ public class AddTransactionActivity extends AppCompatActivity implements DatePic
         });
     }
 
-    // TODO: 5/12/22 Move static array lists from java to xml
-
+    @Override
+    public void onBackPressed() {
+        goBack(getInfoAboutWallet().getString("WALLET_NAME"), getInfoAboutWallet().getString("CURRENCY"));
+    }
 
     void goBack(String walletName, String walletCurrency)
     {
