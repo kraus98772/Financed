@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Vallet</string>
+    <string name="app_name" translatable="false">Valler</string>
     <string name="my_wallets_header">My Wallets</string>
     <string name="wallet_name_holder">Name</string>
     <string name="transaction_date_holder" translatable="false">01.01.2022</string>
