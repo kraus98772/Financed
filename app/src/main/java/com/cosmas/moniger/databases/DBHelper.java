@@ -78,7 +78,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // TODO: 5/10/22 add remove transaction feature
     public void removeTransaction(String walletName, int transactionId)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -148,7 +147,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return new TransactionContent(category, description);
     }
 
-    // TODO: 5/17/22 if there's a problem with db then check if db.close() is causing any problems
     public ArrayList<Wallet> getWalletsArrayList()
     {
         SQLiteDatabase db = this.getReadableDatabase();

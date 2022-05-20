@@ -125,6 +125,7 @@ public class AddWalletActivity extends AppCompatActivity {
 
     // TODO: 5/19/22 Move the warnings to the string.xml and add translations
     // TODO: 5/19/22 Check first if the wallet with the name already exists before adding it
+
     void setupAddWalletButton()
     {
 
@@ -145,8 +146,6 @@ public class AddWalletActivity extends AppCompatActivity {
             }
         });
     }
-
-    //TODO: 4/25/22 fix last wallet not visible when the number of wallets is greater than 5
 
     boolean areFieldsValid(String name, String currency, int image)
     {

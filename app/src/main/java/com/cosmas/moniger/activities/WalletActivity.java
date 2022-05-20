@@ -32,8 +32,6 @@ public class WalletActivity extends AppCompatActivity {
     // TODO: 5/1/22 Add settings to a wallet [ delete wallet, convert into another currency ( can convert simply into a different currency or calculate all transactions
     //  into different currency depending on current course ) ]
 
-    // TODO: 5/11/22 set default date in addTransaction to current day
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
