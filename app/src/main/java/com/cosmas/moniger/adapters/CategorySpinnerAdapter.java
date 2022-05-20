@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.adapters;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.cosmas.moniger.R;
 
 
 public class CategorySpinnerAdapter extends BaseAdapter {

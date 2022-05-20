@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.utils;
 
 import android.text.InputFilter;
 import android.text.Spanned;

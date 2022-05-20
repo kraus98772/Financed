@@ -1,7 +1,6 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Handler;
 import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -19,11 +17,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.LocalDate;
+import com.cosmas.moniger.adapters.CategorySpinnerAdapter;
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.utils.DateTextFormatter;
+import com.cosmas.moniger.utils.DecimalDigitsInputFilter;
+import com.cosmas.moniger.R;
+import com.cosmas.moniger.utils.SimpleDate;
+import com.cosmas.moniger.utils.Transaction;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddTransactionActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 

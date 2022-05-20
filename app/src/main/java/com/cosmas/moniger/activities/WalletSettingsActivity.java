@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.R;
 
 public class WalletSettingsActivity extends AppCompatActivity {
 

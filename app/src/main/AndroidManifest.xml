@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Moniger" >
         <activity
-            android:name=".TransactionActivity"
+            android:name=".activities.TransactionActivity"
             android:exported="false" />
         <activity
-            android:name=".AddTransactionActivity"
+            android:name=".activities.AddTransactionActivity"
             android:exported="false" />
         <activity
-            android:name=".WalletSettingsActivity"
+            android:name=".activities.WalletSettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".AddWalletActivity"
+            android:name=".activities.AddWalletActivity"
             android:exported="false" />
         <activity
-            android:name=".WalletActivity"
+            android:name=".activities.WalletActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

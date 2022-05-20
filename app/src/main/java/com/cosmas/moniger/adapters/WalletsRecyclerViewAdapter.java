@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cosmas.moniger.R;
+import com.cosmas.moniger.utils.Wallet;
+import com.cosmas.moniger.activities.WalletActivity;
 
 import java.util.ArrayList;
 

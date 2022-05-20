@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,8 +11,13 @@ import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.cosmas.moniger.utils.Currency;
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.R;
+import com.cosmas.moniger.utils.Transaction;
+import com.cosmas.moniger.adapters.TransactionsRecyclerViewAdapter;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public class WalletActivity extends AppCompatActivity {
 

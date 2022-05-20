@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.cosmas.moniger.utils.Currency;
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.R;
 
 
 public class TransactionActivity extends AppCompatActivity {

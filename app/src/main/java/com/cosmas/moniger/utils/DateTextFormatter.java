@@ -1,6 +1,4 @@
-package com.cosmas.moniger;
-
-import java.util.Date;
+package com.cosmas.moniger.utils;
 
 public class DateTextFormatter {
 

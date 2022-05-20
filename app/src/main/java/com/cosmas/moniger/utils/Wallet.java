@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.utils;
 
 public class Wallet {
     private int walletId;

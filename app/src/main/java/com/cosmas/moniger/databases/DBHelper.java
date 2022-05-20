@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.databases;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,9 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.cosmas.moniger.utils.SimpleDate;
+import com.cosmas.moniger.utils.Transaction;
+import com.cosmas.moniger.utils.TransactionContent;
+import com.cosmas.moniger.utils.Wallet;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -126,7 +130,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return transactions;
     }
 
-    public TransactionContent getTransactionContent(String walletName,Transaction transaction)
+    public TransactionContent getTransactionContent(String walletName, Transaction transaction)
     {
         SQLiteDatabase db = this.getReadableDatabase();
 

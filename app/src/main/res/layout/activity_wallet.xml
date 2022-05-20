@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallet_background"
     android:padding="24dp"
-    tools:context=".WalletActivity">
+    tools:context=".activities.WalletActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/top_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        android:id="@+id/top_header">
 
         <RelativeLayout
             android:id="@+id/top_menu"
@@ -108,18 +105,9 @@
         android:id="@+id/transactions_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/idkSomeSantaHelper"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/top_header"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_below="@+id/top_header"
+        />
 
-    <View
-        android:id="@+id/idkSomeSantaHelper"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

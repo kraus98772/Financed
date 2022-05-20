@@ -1,8 +1,7 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.utils.DateTextFormatter;
+import com.cosmas.moniger.R;
+import com.cosmas.moniger.utils.Transaction;
+import com.cosmas.moniger.activities.TransactionActivity;
+
 import java.util.ArrayList;
-import java.util.Date;
 
 public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<TransactionsRecyclerViewAdapter.ViewHolder> {
 

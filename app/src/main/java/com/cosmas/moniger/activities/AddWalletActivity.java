@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.cosmas.moniger.utils.Currency;
+import com.cosmas.moniger.adapters.CurrencySpinnerAdapter;
+import com.cosmas.moniger.databases.DBHelper;
+import com.cosmas.moniger.R;
+import com.cosmas.moniger.utils.Wallet;
+import com.cosmas.moniger.utils.WalletImage;
 
 
 public class AddWalletActivity extends AppCompatActivity {

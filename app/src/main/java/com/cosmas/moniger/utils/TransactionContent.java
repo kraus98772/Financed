@@ -1,4 +1,4 @@
-package com.cosmas.moniger;
+package com.cosmas.moniger.utils;
 
 public class TransactionContent {
     private String category;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="24dp"
-    tools:context=".AddTransactionActivity">
+    tools:context=".activities.AddTransactionActivity">
 
     <RelativeLayout
         android:id="@+id/new_transaction_header"
