@@ -2,6 +2,7 @@ package com.cosmas.moniger.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
 
     public static final String TAG = "TransactionsRecyclerViewAdapter";
     private Context mContext;
-    private ArrayList<Transaction> transactions = new ArrayList<>();
+    public ArrayList<Transaction> transactions = new ArrayList<>();
     private final String walletName, walletCurrency;
 
     public TransactionsRecyclerViewAdapter(Context mContext, ArrayList<Transaction> transactions, String walletName, String walletCurrency) {
@@ -31,6 +32,27 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
         this.transactions = transactions;
         this.walletName = walletName;
         this.walletCurrency = walletCurrency;
+    }
+
+    public void clear() {
+        int size = transactions.size();
+        this.transactions = new ArrayList<>();
+        this.notifyItemRangeRemoved(0, size);
+    }
+
+    public void addNewTransaction(Transaction transaction)
+    {
+        transactions.add(transaction);
+        notifyItemInserted(transactions.size()-1);
+    }
+
+    public void setNewData(ArrayList<Transaction> newTransactions)
+    {
+        clear();
+        for(int i = 0; i < newTransactions.size() ;i++)
+        {
+            addNewTransaction(newTransactions.get(i));
+        }
     }
 
     @NonNull
@@ -43,6 +65,10 @@ public class TransactionsRecyclerViewAdapter extends RecyclerView.Adapter<Transa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.transactionValue.setText(String.valueOf(transactions.get(position).getTransactionValue()));
+        if(transactions.get(position).getTransactionValue() < 0)
+        {
+            holder.transactionValue.setTextColor(Color.parseColor("#BB342F"));
+        }
         DateTextFormatter dateTextFormatter = new DateTextFormatter();
         String transactionDateText = dateTextFormatter.formatText(transactions.get(position).getTransactionDate(), ".");
         holder.transactionDate.setText(transactionDateText);

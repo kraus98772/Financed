@@ -6,6 +6,8 @@
 
         <item name="android:windowBackground">@color/background</item>
 
+        <item name="android:forceDarkAllowed">false</item>
+
         <item name="android:colorAccent">@color/background</item>
 
         <!--

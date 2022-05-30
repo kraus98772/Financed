@@ -86,13 +86,24 @@
                 android:textSize="20sp" />
 
             <Button
+                android:id="@+id/all_transactions_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/add_transaction_button"
+                android:background="@drawable/add_transaction_button"
+                android:text="ALL"
+                android:textColor="@color/on_button_color"
+                android:visibility="visible" />
+
+            <Button
                 android:id="@+id/add_transaction_button"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
-                android:textColor="@color/on_button_color"
                 android:background="@drawable/add_transaction_button"
-                android:text="@string/new_transaction" />
+                android:text="@string/new_transaction"
+                android:textColor="@color/on_button_color" />
 
         </RelativeLayout>
 
@@ -105,9 +116,8 @@
         android:id="@+id/transactions_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/top_header"
-        />
+        android:layout_marginTop="20dp" />
 
 
 </RelativeLayout>

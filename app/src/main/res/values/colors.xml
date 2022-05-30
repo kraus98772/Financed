@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="raisin_black">#272727</color>
+    <color name="alice_blue">#E1E5EE</color>
+    <color name="alice_blue_dark">#C8CCDA</color>
+
     <color name="button_color">#272727</color>
     <color name="background">#E1E5EE</color>
     <color name="background_dark">#C8CCDA</color>

@@ -87,6 +87,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /*
+    This zombie code doesn't work, for some reason i can't check if there is already a row in the database
     public boolean isNameAvailable(String walletName)
     {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -100,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         cursor.moveToFirst();
         return (cursor.getInt(0) == 0);
-    }
+    }*/
 
     public ArrayList<Transaction> getTransactions(String walletName)
     {
@@ -118,6 +120,68 @@ public class DBHelper extends SQLiteOpenHelper {
                 int month = cursor.getInt(3);
                 int year = cursor.getInt(4);
                 SimpleDate date = new SimpleDate(day, month, year);
+                Transaction transaction = new Transaction(value, date, "", "");
+                transaction.setId(id);
+                transactions.add(transaction);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        Collections.reverse(transactions);
+        db.close();
+        return transactions;
+    }
+
+    public ArrayList<Transaction> getTransactions(String walletName, int setYear, int setMonth, int setDay)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+        Cursor cursor = db.rawQuery("SELECT * FROM "
+                    + walletTransactionsTableName
+                    + " WHERE " + YEAR_COLUMN + "=" + setYear
+                    + " AND " + MONTH_COLUMN + "=" + setMonth
+                    + " AND " + DAY_COLUMN + "=" + setDay, null);
+
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        if(cursor.moveToFirst())
+        {
+            do {
+                int id = cursor.getInt(0);
+                double value = cursor.getDouble(1);
+                SimpleDate date = new SimpleDate(setDay, setMonth, setYear);
+                Transaction transaction = new Transaction(value, date, "", "");
+                transaction.setId(id);
+                transactions.add(transaction);
+                System.out.println(transaction.getId() + ": " + transaction.getTransactionValue());
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        Collections.reverse(transactions);
+        db.close();
+        return transactions;
+    }
+
+    public ArrayList<Transaction> getTransactions(String walletName, int setYear, int setMonth)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String walletTransactionsTableName = createWalletTransactionsTableName(walletName);
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM "
+                        + walletTransactionsTableName
+                        + " WHERE " + YEAR_COLUMN + "=" + setYear
+                        + " AND " + MONTH_COLUMN + "=" + setMonth,
+                null);
+
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        if(cursor.moveToFirst())
+        {
+            do {
+                int id = cursor.getInt(0);
+                double value = cursor.getDouble(1);
+                int day = cursor.getInt(2);
+                SimpleDate date = new SimpleDate(day, setMonth, setYear);
                 Transaction transaction = new Transaction(value, date, "", "");
                 transaction.setId(id);
                 transactions.add(transaction);

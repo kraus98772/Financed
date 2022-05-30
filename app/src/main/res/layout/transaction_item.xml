@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@drawable/wallet_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -28,30 +27,33 @@
                 android:fontFamily="@font/rubik_family"
                 android:text="@string/value_holder"
                 android:textColor="@color/text_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/transaction_currency_holder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:fontFamily="@font/rubik_family"
                 android:text="$"
                 android:textColor="@color/text_color"
                 android:textSize="18sp"
                 android:visibility="invisible"
-                app:layout_constraintLeft_toRightOf="@+id/transaction_value_holder" />
+                app:layout_constraintLeft_toRightOf="@+id/transaction_value_holder"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/transaction_date_holder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
                 android:fontFamily="@font/rubik_family"
                 android:text="01.01.2022"
                 android:textColor="@color/text_color"
                 android:textSize="18sp"
-                app:layout_constraintRight_toRightOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

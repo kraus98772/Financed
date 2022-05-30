@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,7 +25,7 @@ public class WalletActivity extends AppCompatActivity {
     private ArrayList<Transaction> transactions = new ArrayList<>();
     private TextView currencyView, walletValueView;
     private ImageButton goBackButton, settingsButton;
-    private Button addTransactionButton;
+    private Button addTransactionButton, allTransactionsButton;
     private String walletName, walletCurrency;
 
     private RecyclerView recyclerView;
@@ -46,12 +47,12 @@ public class WalletActivity extends AppCompatActivity {
         setupGoBackButton();
         initRecyclerView();
 
-        setupWalletValue();
-
         setCurrencyView(walletCurrency);
+        setupWalletValue();
 
         setupSettingsButton(walletName, walletCurrency);
         setupAddTransactionButton(walletName, walletCurrency);
+        setupAllTransactionsButton(walletName, walletCurrency);
 
     }
 
@@ -74,6 +75,7 @@ public class WalletActivity extends AppCompatActivity {
         settingsButton = findViewById(R.id.settings_button);
         walletValueView = findViewById(R.id.wallet_value);
         addTransactionButton = findViewById(R.id.add_transaction_button);
+        allTransactionsButton = findViewById(R.id.all_transactions_button);
     }
 
     void setupSettingsButton(String walletName, String walletCurrency)
@@ -124,6 +126,11 @@ public class WalletActivity extends AppCompatActivity {
         {
             sum += transactions.get(i).getTransactionValue();
         }
+        if(sum < 0)
+        {
+            walletValueView.setTextColor(Color.parseColor("#BB342F"));
+            currencyView.setTextColor(Color.parseColor("#BB342F"));
+        }
         walletValueView.setText(String.valueOf(sum));
     }
 
@@ -141,6 +148,18 @@ public class WalletActivity extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(this);
         transactions = dbHelper.getTransactions(walletName);
         dbHelper.close();
+    }
 
+    void setupAllTransactionsButton(String walletName, String walletCurrency)
+    {
+        allTransactionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WalletActivity.this, AllTransactionsActivity.class);
+                intent.putExtra("WALLET_NAME", walletName);
+                intent.putExtra("CURRENCY", walletCurrency);
+                startActivity(intent);
+            }
+        });
     }
 }

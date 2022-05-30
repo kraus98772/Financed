@@ -28,13 +28,12 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wallets_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/wallets_recycler_view"
-        android:layout_below="@+id/my_wallets_header"
         android:layout_above="@id/bottom_menu"
-        android:layout_marginVertical="20dp"
-        />
+        android:layout_below="@+id/my_wallets_header"
+        android:layout_marginVertical="30dp" />
 
 
     <RelativeLayout
