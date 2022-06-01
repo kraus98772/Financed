@@ -94,10 +94,7 @@ public class TransactionActivity extends AppCompatActivity {
 
     void goBack()
     {
-        Intent intent = new Intent(TransactionActivity.this, WalletActivity.class);
-        intent.putExtra("WALLET_NAME", walletName);
-        intent.putExtra("CURRENCY", walletCurrency);
-        startActivity(intent);
+        finish();
     }
 
     void setupRemoveTransactionButton()

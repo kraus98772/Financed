@@ -9,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import java.util.Calendar;
 public class AllTransactionsActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
+    private ImageButton goBackButton;
     private SimpleDate today;
     private ArrayList<Transaction> transactions = new ArrayList<>();
     private RelativeLayout datePickerButton;
@@ -37,6 +39,9 @@ public class AllTransactionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_transactions);
+
+        goBackButton = findViewById(R.id.go_back_button);
+        setupGoBackButton();
 
         today = new SimpleDate();
         datePickerButton = findViewById(R.id.date_picker);
@@ -53,6 +58,20 @@ public class AllTransactionsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
+    void setupGoBackButton()
+    {
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
     private void initAdapter() {
         adapter = new TransactionsRecyclerViewAdapter(AllTransactionsActivity.this, transactions, walletName, walletCurrency);
     }

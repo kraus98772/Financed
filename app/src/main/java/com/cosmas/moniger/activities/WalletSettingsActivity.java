@@ -27,7 +27,7 @@ public class WalletSettingsActivity extends AppCompatActivity {
         Bundle extras = getExtrasfromWalletActivity();
         setUpGoBackButton(extras.getString("WALLET_NAME"), extras.getString("CURRENCY"));
         setUpRemoveWalletButton();
-        setUpConfirmWalletRemovalButton();
+        setUpConfirmWalletRemovalButton(extras.getString("WALLET_NAME"));
         setUpCancelWalletRemovalButton();
     }
 
@@ -50,23 +50,16 @@ public class WalletSettingsActivity extends AppCompatActivity {
         goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goBack(walletName, walletCurrency);
+                finish();
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        goBack(getExtrasfromWalletActivity().getString("WALLET_NAME"), getExtrasfromWalletActivity().getString("CURRENCY"));
+        finish();
     }
 
-    void goBack(String walletName, String walletCurrency)
-    {
-        Intent intent = new Intent(WalletSettingsActivity.this, WalletActivity.class);
-        intent.putExtra("WALLET_NAME", walletName);
-        intent.putExtra("CURRENCY", walletCurrency);
-        startActivity(intent);
-    }
 
     void setUpRemoveWalletButton()
     {
@@ -78,13 +71,13 @@ public class WalletSettingsActivity extends AppCompatActivity {
         });
     }
 
-    void setUpConfirmWalletRemovalButton()
+    void setUpConfirmWalletRemovalButton(String walletName)
     {
         confirmWalletRemovalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DBHelper dbHelper = new DBHelper(WalletSettingsActivity.this);
-                dbHelper.removeWallet(getExtrasfromWalletActivity().getString("WALLET_NAME"));
+                dbHelper.removeWallet(walletName);
                 dbHelper.close();
                 startActivity(new Intent(WalletSettingsActivity.this, MainActivity.class));
             }

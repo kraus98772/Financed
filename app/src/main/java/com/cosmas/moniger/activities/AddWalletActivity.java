@@ -75,17 +75,13 @@ public class AddWalletActivity extends AppCompatActivity {
 
     void setupGoBackButton()
     {
-        goBackButton.setOnClickListener(view -> goBack());
+        goBackButton.setOnClickListener(view -> finish());
     }
 
-    void goBack()
-    {
-        startActivity(new Intent(AddWalletActivity.this, MainActivity.class));
-    }
 
     @Override
     public void onBackPressed() {
-        goBack();
+        finish();
     }
 
     void setupImageChoice()
